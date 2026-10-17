@@ -284,3 +284,5 @@ svg.diag{width:100%;min-width:600px;height:auto;display:block}
 }
 @media (max-width:600px){ .chipbox{display:none} ul.leg li{grid-template-columns:1fr;gap:2px} .feat>header,.feat>dl,.feat>.chips,.feat>.links-row{margin-inline:16px} }
 ul.leg .st{justify-self:start}
+.fs .vid+.vid{margin-top:4px}
+#evidencia .vids{display:flex;flex-wrap:wrap;gap:16px}
