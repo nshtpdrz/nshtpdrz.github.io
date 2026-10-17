@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Portafolio de Daniel Pedraza · Sistemas embebidos e IoT">
+<meta property="og:description" content="Proyectos con ESP32 y Arduino documentados con arquitectura, hardware y código.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nshtpdrz.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='18' height='18' rx='3' fill='%2315191a'/%3E%3Cg stroke='%239c4d1b' stroke-width='2'%3E%3Cpath d='M2 11h5M2 16h5M2 21h5M25 11h5M25 16h5M25 21h5'/%3E%3C/g%3E%3C/svg%3E">
+<title>Portafolio de Daniel Pedraza</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portafolio técnico de sistemas embebidos e IoT: proyectos con ESP32 y Arduino documentados con evidencia.">
+<meta name="author" content="Daniel Ignacio Pedraza Martínez">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="top" aria-label="Navegación principal"><div class="in"><a class="brand" href="#inicio">Daniel I. Pedraza</a><div class="links"><a href="#destacados">Proyectos</a><a href="#catalogo">Catálogo</a><a href="#software">Software</a><a href="#perfil">Perfil</a><a href="#documentacion">Documentación</a><a href="#contacto">Contacto</a></div></div></nav>
+<main class="wrap" id="inicio">
+  <header class="hero">
+    <div class="intro">
+      <p class="term" aria-hidden="true"><span class="prompt">nshtpdrz@pachuca</span>:<span class="path">~/portafolio</span>$ ./presentar --dipm-24<span class="cursor"></span></p>
+      <h1>Daniel Ignacio<br><span class="hl">Pedraza Martínez</span></h1>
+      <p class="role">Hago que las cosas <em>sientan, decidan y se conecten</em>: firmware para ESP32 y Arduino, sensores, radio y apps que las controlan.</p>
+      <p class="summary">Construyo prototipos con ESP32 y Arduino que integran sensores, actuadores, comunicación inalámbrica y servicios web. Me interesan los problemas de adquisición de datos, telemetría y automatización, y resolverlos con firmware claro, probado y documentado. Itero cada proyecto en varias versiones y registro qué cambió y por qué.</p>
+      <div class="facts"><span>Ing. TIC · TecNM Pachuca</span><span>7.º semestre</span><span>Profesor de robótica</span><span>Inglés B2</span></div>
+      <p class="goal"><b>Busco:</b> Residencia profesional en 9.º semestre en desarrollo tecnológico, sistemas embebidos o investigación aplicada.</p>
+      <div class="cta"><a class="btn" href="#destacados">Ver proyectos</a><a class="btn ghost" href="#perfil">Perfil técnico</a><a class="btn ghost" href="#contacto">Contacto</a></div>
+    </div>
+    <div class="hero-side">
+      <div class="chipbox"><svg viewBox="0 0 640 300" class="chip" role="img" aria-label="Tecnologías con práctica demostrada: ESP32, Arduino UNO, Wi-Fi STA · AP, Bluetooth A2DP · SPP, I²S audio, I²C · SPI · UART, PWM · ADC, IR · RFID, Firmware C/C++, FreeRTOS, HTTP · HTTPS, REST · JSON, Máquinas de estados, Filtrado de señal, EEPROM, Tinkercad"><rect x="220.0" y="32.0" width="200" height="236" rx="8" class="c-body"/><circle cx="238.0" cy="50.0" r="5" class="c-dot"/><text x="320.0" y="136.0" text-anchor="middle" class="c-name">DIPM-24</text><text x="320.0" y="158.0" text-anchor="middle" class="c-sub">EMBEDDED · IoT</text><text x="320.0" y="176.0" text-anchor="middle" class="c-sub">PACHUCA, HGO · MX</text><line x1="186.0" y1="48.0" x2="220.0" y2="48.0" class="c-pin"/><text x="180.0" y="52.0" text-anchor="end" class="c-lab">ESP32</text><text x="230.0" y="52.0" class="c-num">1</text><line x1="420.0" y1="48.0" x2="454.0" y2="48.0" class="c-pin"/><text x="460.0" y="52.0" class="c-lab">Firmware C/C++</text><text x="410.0" y="52.0" text-anchor="end" class="c-num">16</text><line x1="186.0" y1="77.14285714285714" x2="220.0" y2="77.14285714285714" class="c-pin"/><text x="180.0" y="81.14285714285714" text-anchor="end" class="c-lab">Arduino UNO</text><text x="230.0" y="81.14285714285714" class="c-num">2</text><line x1="420.0" y1="77.14285714285714" x2="454.0" y2="77.14285714285714" class="c-pin"/><text x="460.0" y="81.14285714285714" class="c-lab">FreeRTOS</text><text x="410.0" y="81.14285714285714" text-anchor="end" class="c-num">15</text><line x1="186.0" y1="106.28571428571428" x2="220.0" y2="106.28571428571428" class="c-pin"/><text x="180.0" y="110.28571428571428" text-anchor="end" class="c-lab">Wi-Fi STA · AP</text><text x="230.0" y="110.28571428571428" class="c-num">3</text><line x1="420.0" y1="106.28571428571428" x2="454.0" y2="106.28571428571428" class="c-pin"/><text x="460.0" y="110.28571428571428" class="c-lab">HTTP · HTTPS</text><text x="410.0" y="110.28571428571428" text-anchor="end" class="c-num">14</text><line x1="186.0" y1="135.42857142857144" x2="220.0" y2="135.42857142857144" class="c-pin"/><text x="180.0" y="139.42857142857144" text-anchor="end" class="c-lab">Bluetooth A2DP · SPP</text><text x="230.0" y="139.42857142857144" class="c-num">4</text><line x1="420.0" y1="135.42857142857144" x2="454.0" y2="135.42857142857144" class="c-pin"/><text x="460.0" y="139.42857142857144" class="c-lab">REST · JSON</text><text x="410.0" y="139.42857142857144" text-anchor="end" class="c-num">13</text><line x1="186.0" y1="164.57142857142856" x2="220.0" y2="164.57142857142856" class="c-pin"/><text x="180.0" y="168.57142857142856" text-anchor="end" class="c-lab">I²S audio</text><text x="230.0" y="168.57142857142856" class="c-num">5</text><line x1="420.0" y1="164.57142857142856" x2="454.0" y2="164.57142857142856" class="c-pin"/><text x="460.0" y="168.57142857142856" class="c-lab">Máquinas de estados</text><text x="410.0" y="168.57142857142856" text-anchor="end" class="c-num">12</text><line x1="186.0" y1="193.71428571428572" x2="220.0" y2="193.71428571428572" class="c-pin"/><text x="180.0" y="197.71428571428572" text-anchor="end" class="c-lab">I²C · SPI · UART</text><text x="230.0" y="197.71428571428572" class="c-num">6</text><line x1="420.0" y1="193.71428571428572" x2="454.0" y2="193.71428571428572" class="c-pin"/><text x="460.0" y="197.71428571428572" class="c-lab">Filtrado de señal</text><text x="410.0" y="197.71428571428572" text-anchor="end" class="c-num">11</text><line x1="186.0" y1="222.85714285714286" x2="220.0" y2="222.85714285714286" class="c-pin"/><text x="180.0" y="226.85714285714286" text-anchor="end" class="c-lab">PWM · ADC</text><text x="230.0" y="226.85714285714286" class="c-num">7</text><line x1="420.0" y1="222.85714285714286" x2="454.0" y2="222.85714285714286" class="c-pin"/><text x="460.0" y="226.85714285714286" class="c-lab">EEPROM</text><text x="410.0" y="226.85714285714286" text-anchor="end" class="c-num">10</text><line x1="186.0" y1="252.0" x2="220.0" y2="252.0" class="c-pin"/><text x="180.0" y="256.0" text-anchor="end" class="c-lab">IR · RFID</text><text x="230.0" y="256.0" class="c-num">8</text><line x1="420.0" y1="252.0" x2="454.0" y2="252.0" class="c-pin"/><text x="460.0" y="256.0" class="c-lab">Tinkercad</text><text x="410.0" y="256.0" text-anchor="end" class="c-num">9</text></svg></div>
+      <div class="strip"><figure><img src="assets/img/calaverita-ensamblada.jpg" alt="Prototipo: Calaverita"><figcaption>Calaverita</figcaption></figure><figure><img src="assets/img/robot-4wd-1.jpg" alt="Prototipo: Robot 4WD"><figcaption>Robot 4WD</figcaption></figure><figure><img src="assets/img/aura-prototipo-2.jpg" alt="Prototipo: AURA"><figcaption>AURA</figcaption></figure></div>
+    </div>
+  </header>
+
+  <section class="part" id="como-leer" aria-labelledby="h-leer">
+    <h2 id="h-leer" class="sr">Cómo leer este portafolio</h2>
+    <div class="legend">
+      <div><h4>Estado del proyecto</h4><ul class="leg"><li><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span>Terminado y funcionando</span></li><li><span class="st st-prototipo" title="Construido y programado por el autor">Prototipo</span><span>Construido y programado por el autor</span></li><li><span class="st st-desarrollo" title="En construcción activa">En desarrollo</span><span>En construcción activa</span></li><li><span class="st st-simulacion" title="Validado en simulador">Simulación</span><span>Validado en simulador</span></li><li><span class="st st-exploracion" title="Configuración o pruebas iniciales">Exploración</span><span>Configuración o pruebas iniciales</span></li><li><span class="st st-kit" title="Base comercial con cambios propios">Kit modificado</span><span>Base comercial con cambios propios</span></li></ul></div>
+      <div><h4>Nivel de evidencia de cada dato</h4><ul class="leg ev-leg"><li><span class="ev ev-codigo">Verificado en código</span></li><li><span class="ev ev-reporte">Documentado en reporte</span></li><li><span class="ev ev-declarado">Declarado por el autor</span></li><li><span class="ev ev-video">Foto / video</span></li></ul><p class="small muted">Las fichas solo muestran información con respaldo.</p></div>
+    </div>
+  </section>
+
+  <section class="part" id="destacados" aria-labelledby="h-dest">
+    <div class="part-head"><span class="eyebrow">// proyectos</span><h2 id="h-dest">Proyectos destacados</h2>
+      <p>Cinco proyectos elegidos por la integración entre componentes, la complejidad que se puede comprobar en el código y la documentación disponible.</p></div>
+    <div class="feats">
+<article class="feat" id="d-aura">
+  <a class="thumb thumb-diag" href="proyectos/aura.html" tabindex="-1" aria-hidden="true"><figure class="diagthumb"><svg viewBox="0 0 720 284" role="img" aria-labelledby="dg-t-aura" class="diag"><title id="dg-t-aura">Diagrama de bloques: Micrófono KY-037, Sensor PIR HC-SR501, Receptor IR, Spotify Web API hacia ESP32 hacia LED RGB cátodo común, Pantalla OLED, Panel web, App móvil</title><defs><marker id="ah-t-aura" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" class="d-arrowhead"/></marker></defs><rect x="8" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="45.0" class="d-t">Micrófono KY-037</text><text x="19" y="61.0" class="d-s">Nivel de audio</text><path d="M176,49.0 H230.5 V49.0 H283.0" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="182" y="43.0" class="d-bus">ADC · GPIO34</text><rect x="8" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="107.0" class="d-t">Sensor PIR HC-SR501</text><text x="19" y="123.0" class="d-s">Presencia</text><path d="M176,111.0 H230.5 V111.0 H283.0" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="182" y="105.0" class="d-bus">GPIO27</text><rect x="8" y="150.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="169.0" class="d-t">Receptor IR</text><text x="19" y="185.0" class="d-s">Control remoto NEC</text><path d="M176,173.0 H230.5 V173.0 H283.0" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="182" y="167.0" class="d-bus">GPIO15</text><rect x="8" y="212.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="231.0" class="d-t">Spotify Web API</text><text x="19" y="247.0" class="d-s">Canción en curso</text><path d="M176,235.0 H230.5 V235.0 H283.0" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="182" y="229.0" class="d-bus">HTTPS</text><rect x="544" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="45.0" class="d-t">LED RGB cátodo común</text><text x="555" y="61.0" class="d-s">3 canales PWM</text><path d="M435.0,49.0 H489.5 V49.0 H542" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="444.0" y="43.0" class="d-bus">ledc 5 kHz</text><rect x="544" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="107.0" class="d-t">Pantalla OLED</text><text x="555" y="123.0" class="d-s">SSD1306 128×64</text><path d="M435.0,111.0 H489.5 V111.0 H542" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="444.0" y="105.0" class="d-bus">I²C 0x3C</text><rect x="544" y="150.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="169.0" class="d-t">Panel web</text><text x="555" y="185.0" class="d-s">Navegador en la LAN</text><path d="M435.0,173.0 H489.5 V173.0 H542" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="444.0" y="167.0" class="d-bus">HTTP :80</text><rect x="544" y="212.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="231.0" class="d-t">App móvil</text><text x="555" y="247.0" class="d-s">React Native</text><path d="M435.0,235.0 H489.5 V235.0 H542" class="d-wire" marker-end="url(#ah-t-aura)"/><text x="444.0" y="229.0" class="d-bus">BLE</text><rect x="285.0" y="26.0" width="150" height="232" rx="6" class="d-mcu"/><line x1="280.0" y1="40.5" x2="285.0" y2="40.5" class="d-pin"/><line x1="435.0" y1="40.5" x2="440.0" y2="40.5" class="d-pin"/><line x1="280.0" y1="55.0" x2="285.0" y2="55.0" class="d-pin"/><line x1="435.0" y1="55.0" x2="440.0" y2="55.0" class="d-pin"/><line x1="280.0" y1="69.5" x2="285.0" y2="69.5" class="d-pin"/><line x1="435.0" y1="69.5" x2="440.0" y2="69.5" class="d-pin"/><line x1="280.0" y1="84.0" x2="285.0" y2="84.0" class="d-pin"/><line x1="435.0" y1="84.0" x2="440.0" y2="84.0" class="d-pin"/><line x1="280.0" y1="98.5" x2="285.0" y2="98.5" class="d-pin"/><line x1="435.0" y1="98.5" x2="440.0" y2="98.5" class="d-pin"/><line x1="280.0" y1="113.0" x2="285.0" y2="113.0" class="d-pin"/><line x1="435.0" y1="113.0" x2="440.0" y2="113.0" class="d-pin"/><line x1="280.0" y1="127.5" x2="285.0" y2="127.5" class="d-pin"/><line x1="435.0" y1="127.5" x2="440.0" y2="127.5" class="d-pin"/><line x1="280.0" y1="142.0" x2="285.0" y2="142.0" class="d-pin"/><line x1="435.0" y1="142.0" x2="440.0" y2="142.0" class="d-pin"/><line x1="280.0" y1="156.5" x2="285.0" y2="156.5" class="d-pin"/><line x1="435.0" y1="156.5" x2="440.0" y2="156.5" class="d-pin"/><line x1="280.0" y1="171.0" x2="285.0" y2="171.0" class="d-pin"/><line x1="435.0" y1="171.0" x2="440.0" y2="171.0" class="d-pin"/><line x1="280.0" y1="185.5" x2="285.0" y2="185.5" class="d-pin"/><line x1="435.0" y1="185.5" x2="440.0" y2="185.5" class="d-pin"/><line x1="280.0" y1="200.0" x2="285.0" y2="200.0" class="d-pin"/><line x1="435.0" y1="200.0" x2="440.0" y2="200.0" class="d-pin"/><line x1="280.0" y1="214.5" x2="285.0" y2="214.5" class="d-pin"/><line x1="435.0" y1="214.5" x2="440.0" y2="214.5" class="d-pin"/><line x1="280.0" y1="229.0" x2="285.0" y2="229.0" class="d-pin"/><line x1="435.0" y1="229.0" x2="440.0" y2="229.0" class="d-pin"/><line x1="280.0" y1="243.5" x2="285.0" y2="243.5" class="d-pin"/><line x1="435.0" y1="243.5" x2="440.0" y2="243.5" class="d-pin"/><text x="360.0" y="140.0" text-anchor="middle" class="d-mt">ESP32</text><text x="360.0" y="158.0" text-anchor="middle" class="d-ms">lazo único</text></svg></figure></a>
+  <header>
+    <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">nov 2025 – jun 2026</span></div>
+    <h3><a href="proyectos/aura.html">AURA · Lámpara RGB inteligente</a></h3>
+  </header>
+  <dl class="feat-dl">
+    <div><dt>Problema</dt><dd>Las luces RGB domésticas se encienden a mano, no responden al entorno y suelen depender de un solo método de control.</dd></div>
+    <div><dt>Qué construí</dt><dd>Una lámpara con ESP32 que se enciende por presencia, reacciona a la música captada por micrófono y se controla por panel web, control IR y una app móvil; una versión posterior muestra en pantalla lo que suena en Spotify.</dd></div>
+    <div><dt>Qué puedo demostrar</dt><dd>Integración de 4 entradas (micrófono, PIR, IR, API web) y 4 salidas (LED PWM, OLED, panel web, app) en un mismo lazo no bloqueante.</dd></div>
+    <div><dt>Documentación y código</dt><dd>Reporte de evaluación (Tecnologías Inalámbricas, 28 nov 2025) con fotos de pruebas; 6 versiones de código.</dd></div>
+  </dl>
+  <div class="chips"><span>ESP32</span><span>C++</span><span>WebServer</span><span>IRremote</span><span>PWM (ledc)</span><span>SpotifyArduino</span><span>ArduinoJson</span><span>HTTPS</span><span>SSD1306</span><span>React Native</span></div>
+  <div class="links-row"><a class="go" href="proyectos/aura.html">Ver ficha técnica <span aria-hidden="true">→</span></a><a class="go" href="https://github.com/nshtpdrz/aura-lampara-rgb-esp32" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="feat" id="d-calaverita">
+  <a class="thumb" href="proyectos/calaverita.html" tabindex="-1" aria-hidden="true"><img src="assets/img/calaverita-ensamblada.jpg" alt="" loading="lazy"></a>
+  <header>
+    <div class="feat-top"><span class="st st-desarrollo" title="En construcción activa">En desarrollo</span><span class="mono muted">oct 2026</span></div>
+    <h3><a href="proyectos/calaverita.html">Calaverita parlante con IA</a></h3>
+  </header>
+  <dl class="feat-dl">
+    <div><dt>Problema</dt><dd>Explorar un asistente de voz completo en un microcontrolador: escuchar, decidir si le hablan, responder con voz y expresar estados.</dd></div>
+    <div><dt>Qué construí</dt><dd>Una calavera con ESP32 que detecta voz con un micrófono I²S, envía la frase a Google Gemini por HTTPS, reproduce la respuesta hablada y anima dos ojos OLED; sin internet responde con audios grabados.</dd></div>
+    <div><dt>Qué puedo demostrar</dt><dd>Audio en tiempo real en una tarea FreeRTOS, umbral de ruido adaptativo, dos buses I²C simultáneos y un cliente HTTP escrito a mano que maneja respuestas chunked.</dd></div>
+    <div><dt>Documentación y código</dt><dd>Código fuente de dos versiones, foto y video del prototipo ensamblado.</dd></div>
+  </dl>
+  <div class="chips"><span>ESP32</span><span>C++</span><span>FreeRTOS</span><span>I²S</span><span>INMP441</span><span>MAX98357A</span><span>SSD1306 ×2</span><span>HTTPS</span><span>Gemini API</span></div>
+  <div class="links-row"><a class="go" href="proyectos/calaverita.html">Ver ficha técnica <span aria-hidden="true">→</span></a><a class="go" href="https://github.com/nshtpdrz/calaverita-parlante-esp32" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="feat" id="d-bocina">
+  <a class="thumb thumb-diag" href="proyectos/bocina.html" tabindex="-1" aria-hidden="true"><figure class="diagthumb"><svg viewBox="0 0 720 222" role="img" aria-labelledby="dg-t-bocina" class="diag"><title id="dg-t-bocina">Diagrama de bloques: Celular, Botones ×3, Potenciómetro hacia ESP32 hacia Salida I²S, Pantalla OLED, LED RGB</title><defs><marker id="ah-t-bocina" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" class="d-arrowhead"/></marker></defs><rect x="8" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="45.0" class="d-t">Celular</text><text x="19" y="61.0" class="d-s">Fuente de audio</text><path d="M176,49.0 H230.5 V49.0 H283.0" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="182" y="43.0" class="d-bus">Bluetooth A2DP</text><rect x="8" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="107.0" class="d-t">Botones ×3</text><text x="19" y="123.0" class="d-s">Anterior · Play · Siguiente</text><path d="M176,111.0 H230.5 V111.0 H283.0" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="182" y="105.0" class="d-bus">GPIO 18/19/23</text><rect x="8" y="150.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="169.0" class="d-t">Potenciómetro</text><text x="19" y="185.0" class="d-s">Volumen</text><path d="M176,173.0 H230.5 V173.0 H283.0" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="182" y="167.0" class="d-bus">ADC GPIO34</text><rect x="544" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="45.0" class="d-t">Salida I²S</text><text x="555" y="61.0" class="d-s">DAC/amplificador</text><path d="M435.0,49.0 H489.5 V49.0 H542" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="444.0" y="43.0" class="d-bus">I²S 25/32/33</text><rect x="544" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="107.0" class="d-t">Pantalla OLED</text><text x="555" y="123.0" class="d-s">Título, artista, progreso</text><path d="M435.0,111.0 H489.5 V111.0 H542" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="444.0" y="105.0" class="d-bus">I²C</text><rect x="544" y="150.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="169.0" class="d-t">LED RGB</text><text x="555" y="185.0" class="d-s">Estado y arcoíris</text><path d="M435.0,173.0 H489.5 V173.0 H542" class="d-wire" marker-end="url(#ah-t-bocina)"/><text x="444.0" y="167.0" class="d-bus">PWM 14/12/13</text><rect x="285.0" y="26.0" width="150" height="170" rx="6" class="d-mcu"/><line x1="280.0" y1="40.166666666666664" x2="285.0" y2="40.166666666666664" class="d-pin"/><line x1="435.0" y1="40.166666666666664" x2="440.0" y2="40.166666666666664" class="d-pin"/><line x1="280.0" y1="54.33333333333333" x2="285.0" y2="54.33333333333333" class="d-pin"/><line x1="435.0" y1="54.33333333333333" x2="440.0" y2="54.33333333333333" class="d-pin"/><line x1="280.0" y1="68.5" x2="285.0" y2="68.5" class="d-pin"/><line x1="435.0" y1="68.5" x2="440.0" y2="68.5" class="d-pin"/><line x1="280.0" y1="82.66666666666666" x2="285.0" y2="82.66666666666666" class="d-pin"/><line x1="435.0" y1="82.66666666666666" x2="440.0" y2="82.66666666666666" class="d-pin"/><line x1="280.0" y1="96.83333333333333" x2="285.0" y2="96.83333333333333" class="d-pin"/><line x1="435.0" y1="96.83333333333333" x2="440.0" y2="96.83333333333333" class="d-pin"/><line x1="280.0" y1="111.0" x2="285.0" y2="111.0" class="d-pin"/><line x1="435.0" y1="111.0" x2="440.0" y2="111.0" class="d-pin"/><line x1="280.0" y1="125.16666666666667" x2="285.0" y2="125.16666666666667" class="d-pin"/><line x1="435.0" y1="125.16666666666667" x2="440.0" y2="125.16666666666667" class="d-pin"/><line x1="280.0" y1="139.33333333333331" x2="285.0" y2="139.33333333333331" class="d-pin"/><line x1="435.0" y1="139.33333333333331" x2="440.0" y2="139.33333333333331" class="d-pin"/><line x1="280.0" y1="153.5" x2="285.0" y2="153.5" class="d-pin"/><line x1="435.0" y1="153.5" x2="440.0" y2="153.5" class="d-pin"/><line x1="280.0" y1="167.66666666666666" x2="285.0" y2="167.66666666666666" class="d-pin"/><line x1="435.0" y1="167.66666666666666" x2="440.0" y2="167.66666666666666" class="d-pin"/><line x1="280.0" y1="181.83333333333334" x2="285.0" y2="181.83333333333334" class="d-pin"/><line x1="435.0" y1="181.83333333333334" x2="440.0" y2="181.83333333333334" class="d-pin"/><text x="360.0" y="109.0" text-anchor="middle" class="d-mt">ESP32</text><text x="360.0" y="127.0" text-anchor="middle" class="d-ms">A2DP Sink · AVRCP</text></svg></figure></a>
+  <header>
+    <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">jun 2026</span></div>
+    <h3><a href="proyectos/bocina.html">Bocina Inteligente</a></h3>
+  </header>
+  <dl class="feat-dl">
+    <div><dt>Problema</dt><dd>Construir una bocina Bluetooth propia con controles físicos y pantalla, en lugar de un módulo cerrado.</dd></div>
+    <div><dt>Qué construí</dt><dd>Una bocina con ESP32 que recibe audio del celular por Bluetooth, lo entrega por I²S, muestra título, artista y progreso en OLED y se controla con botones y perilla.</dd></div>
+    <div><dt>Qué puedo demostrar</dt><dd>Cadena de audio Bluetooth A2DP → I²S, control remoto AVRCP y una interfaz física con antirrebote y marquesina.</dd></div>
+    <div><dt>Documentación y código</dt><dd>Código fuente de 5 versiones.</dd></div>
+  </dl>
+  <div class="chips"><span>ESP32</span><span>C++</span><span>Bluetooth A2DP</span><span>AVRCP</span><span>I²S</span><span>SSD1306</span><span>ESP32-A2DP</span></div>
+  <div class="links-row"><a class="go" href="proyectos/bocina.html">Ver ficha técnica <span aria-hidden="true">→</span></a><a class="go" href="https://github.com/nshtpdrz/bocina-inteligente-esp32" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="feat" id="d-robot-4wd">
+  <a class="thumb" href="proyectos/robot-4wd.html" tabindex="-1" aria-hidden="true"><img src="assets/img/robot-4wd-1.jpg" alt="" loading="lazy"></a>
+  <header>
+    <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">may 2026</span></div>
+    <h3><a href="proyectos/robot-4wd.html">Robot 4WD: Bluetooth, sumo y seguidor de línea</a></h3>
+  </header>
+  <dl class="feat-dl">
+    <div><dt>Problema</dt><dd>Un mismo robot debía competir en sumo, seguir una línea y manejarse a control remoto.</dd></div>
+    <div><dt>Qué construí</dt><dd>El firmware de un robot de 4 ruedas con Arduino UNO y tres modos que se cambian desde el celular por Bluetooth: manual, sumo autónomo y seguidor de línea.</dd></div>
+    <div><dt>Qué puedo demostrar</dt><dd>Máquinas de estados anidadas, control diferencial de motores y fusión de un ultrasónico con barrido y tres sensores de línea.</dd></div>
+    <div><dt>Documentación y código</dt><dd>Código comentado con pines y comandos, versión de evasión de borde, utilidad de configuración AT y fotos del robot.</dd></div>
+  </dl>
+  <div class="chips"><span>Arduino UNO</span><span>C++</span><span>L298N</span><span>HC-SR04</span><span>Servo</span><span>HC-05</span><span>UART</span></div>
+  <div class="links-row"><a class="go" href="proyectos/robot-4wd.html">Ver ficha técnica <span aria-hidden="true">→</span></a><a class="go" href="https://github.com/nshtpdrz/robot-4wd-sumo-seguidor" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="feat" id="d-batalla-naval">
+  <a class="thumb thumb-diag" href="proyectos/batalla-naval.html" tabindex="-1" aria-hidden="true"><figure class="diagthumb"><svg viewBox="0 0 720 160" role="img" aria-labelledby="dg-t-batalla-naval" class="diag"><title id="dg-t-batalla-naval">Diagrama de bloques: Jugador 1, Jugador 2 hacia ESP32 hacia Servo, Buzzer</title><defs><marker id="ah-t-batalla-naval" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" class="d-arrowhead"/></marker></defs><rect x="8" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="45.0" class="d-t">Jugador 1</text><text x="19" y="61.0" class="d-s">Navegador del celular</text><path d="M176,49.0 H230.5 V49.0 H283.0" class="d-wire" marker-end="url(#ah-t-batalla-naval)"/><text x="182" y="43.0" class="d-bus">HTTP</text><rect x="8" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="19" y="107.0" class="d-t">Jugador 2</text><text x="19" y="123.0" class="d-s">Navegador del celular</text><path d="M176,111.0 H230.5 V111.0 H283.0" class="d-wire" marker-end="url(#ah-t-batalla-naval)"/><text x="182" y="105.0" class="d-bus">HTTP</text><rect x="544" y="26.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="45.0" class="d-t">Servo</text><text x="555" y="61.0" class="d-s">Apunta a la casilla</text><path d="M435.0,49.0 H489.5 V49.0 H542" class="d-wire" marker-end="url(#ah-t-batalla-naval)"/><text x="444.0" y="43.0" class="d-bus">GPIO18</text><rect x="544" y="88.0" width="168" height="46" rx="4" class="d-box"/><text x="555" y="107.0" class="d-t">Buzzer</text><text x="555" y="123.0" class="d-s">Agua / impacto</text><path d="M435.0,111.0 H489.5 V111.0 H542" class="d-wire" marker-end="url(#ah-t-batalla-naval)"/><text x="444.0" y="105.0" class="d-bus">GPIO5</text><rect x="285.0" y="26.0" width="150" height="108" rx="6" class="d-mcu"/><line x1="280.0" y1="41.42857142857143" x2="285.0" y2="41.42857142857143" class="d-pin"/><line x1="435.0" y1="41.42857142857143" x2="440.0" y2="41.42857142857143" class="d-pin"/><line x1="280.0" y1="56.85714285714286" x2="285.0" y2="56.85714285714286" class="d-pin"/><line x1="435.0" y1="56.85714285714286" x2="440.0" y2="56.85714285714286" class="d-pin"/><line x1="280.0" y1="72.28571428571428" x2="285.0" y2="72.28571428571428" class="d-pin"/><line x1="435.0" y1="72.28571428571428" x2="440.0" y2="72.28571428571428" class="d-pin"/><line x1="280.0" y1="87.71428571428572" x2="285.0" y2="87.71428571428572" class="d-pin"/><line x1="435.0" y1="87.71428571428572" x2="440.0" y2="87.71428571428572" class="d-pin"/><line x1="280.0" y1="103.14285714285714" x2="285.0" y2="103.14285714285714" class="d-pin"/><line x1="435.0" y1="103.14285714285714" x2="440.0" y2="103.14285714285714" class="d-pin"/><line x1="280.0" y1="118.57142857142857" x2="285.0" y2="118.57142857142857" class="d-pin"/><line x1="435.0" y1="118.57142857142857" x2="440.0" y2="118.57142857142857" class="d-pin"/><text x="360.0" y="78.0" text-anchor="middle" class="d-mt">ESP32</text><text x="360.0" y="96.0" text-anchor="middle" class="d-ms">softAP · REST</text></svg></figure></a>
+  <header>
+    <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">jul 2026</span></div>
+    <h3><a href="proyectos/batalla-naval.html">Batalla Naval IoT</a></h3>
+  </header>
+  <dl class="feat-dl">
+    <div><dt>Problema</dt><dd>Jugar en red local sin internet ni router, con respuesta física en el tablero.</dd></div>
+    <div><dt>Qué construí</dt><dd>Un juego por turnos para dos jugadores alojado en un ESP32 que crea su propia red Wi-Fi; los jugadores usan el navegador del celular y un servo y un buzzer dan el efecto físico.</dd></div>
+    <div><dt>Qué puedo demostrar</dt><dd>Diseño de una API REST pequeña con estado en el microcontrolador y una versión que mapea el tablero a medidas reales de un sonar.</dd></div>
+    <div><dt>Documentación y código</dt><dd>Código de ambas versiones; existe además una versión web para el taller.</dd></div>
+  </dl>
+  <div class="chips"><span>ESP32</span><span>C++</span><span>Wi-Fi softAP</span><span>WebServer</span><span>REST</span><span>JSON</span><span>ESP32Servo</span><span>HC-SR04</span></div>
+  <div class="links-row"><a class="go" href="proyectos/batalla-naval.html">Ver ficha técnica <span aria-hidden="true">→</span></a><a class="go" href="https://github.com/nshtpdrz/batalla-naval-esp32" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article></div>
+  </section>
+
+  <section class="part" id="catalogo" aria-labelledby="h-cat">
+    <div class="part-head"><span class="eyebrow">// catálogo</span><h2 id="h-cat">Catálogo de proyectos</h2><p>Prácticas, prototipos y exploraciones con su nivel de evidencia.</p></div>
+    <div class="filters" id="filtros" hidden>
+      <div role="group" aria-label="Filtrar por categoría"><span class="fl">Categoría</span><button type="button" class="fb" data-group="cat" data-v="all" aria-pressed="true">Todas</button><button type="button" class="fb" data-group="cat" data-v="APIs" aria-pressed="false">APIs</button><button type="button" class="fb" data-group="cat" data-v="Arduino" aria-pressed="false">Arduino</button><button type="button" class="fb" data-group="cat" data-v="ESP32" aria-pressed="false">ESP32</button><button type="button" class="fb" data-group="cat" data-v="IoT" aria-pressed="false">IoT</button><button type="button" class="fb" data-group="cat" data-v="Robótica" aria-pressed="false">Robótica</button><button type="button" class="fb" data-group="cat" data-v="Software" aria-pressed="false">Software</button></div>
+      <div role="group" aria-label="Filtrar por estado"><span class="fl">Estado</span><button type="button" class="fb" data-group="estado" data-v="all" aria-pressed="true">Todos</button><button type="button" class="fb" data-group="estado" data-v="funcional" aria-pressed="false">Funcional</button><button type="button" class="fb" data-group="estado" data-v="desarrollo" aria-pressed="false">En desarrollo</button><button type="button" class="fb" data-group="estado" data-v="simulacion" aria-pressed="false">Simulación</button></div>
+    </div>
+    <p class="empty" id="vacio" hidden>No hay proyectos con esa combinación de filtros.</p>
+    <div class="cats" id="cats">
+<article class="cat" data-estado="funcional" data-cat="ESP32">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">nov 2025</span></div>
+  <h3>Lector y escritor RFID</h3>
+  <p>Lectura de UID y escritura/lectura del bloque 1 de tarjetas MIFARE Classic, con análisis de riesgos del sector trailer.</p>
+  <div class="cat-imgs"><figure><img src="assets/img/rfid-montaje.jpg" alt="Montaje del lector RFID" loading="lazy"><figcaption>Montaje del lector RFID</figcaption></figure><figure><img src="assets/img/rfid-consola.jpg" alt="Menú y lectura en monitor serie" loading="lazy"><figcaption>Menú y lectura en monitor serie</figcaption></figure></div>
+  <p class="evid"><span class="ev ev-reporte">Documentado en reporte</span> Reporte: se leyeron los UID de tres tarjetas y se escribió y leyó el bloque 1 sin errores.</p>
+  <div class="chips"><span>ESP32</span><span>MFRC522</span><span>SPI</span><span>MIFARE Classic</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/rfid" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="simulacion" data-cat="Arduino">
+  <div class="feat-top"><span class="st st-simulacion" title="Validado en simulador">Simulación</span><span class="mono muted">oct 2025</span></div>
+  <h3>Pluma de acceso vehicular</h3>
+  <p>Barrera que sube 45° al detectar un vehículo y que se abre o cierra por completo con control infrarrojo.</p>
+  <div class="cat-imgs"><figure><img src="assets/img/pluma-tinkercad.jpg" alt="Circuito de la pluma en Tinkercad" loading="lazy"><figcaption>Circuito de la pluma en Tinkercad</figcaption></figure></div>
+  <p class="evid"><span class="ev ev-reporte">Documentado en reporte</span> Simulación en Tinkercad y reporte con análisis de fallas en entorno real.</p>
+  <div class="chips"><span>Arduino UNO</span><span>Servo</span><span>HC-SR04</span><span>IR</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/pluma-vehicular" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a><a class="go" href="https://www.tinkercad.com/things/6RjAkW2elnn-evaluacion-u2?sharecode=sfVD-J4Kjnqxw5WdH3lfJSh7hJJ-T6jAI3IZTtBiVzQ" target="_blank" rel="noopener">Abrir simulación en Tinkercad <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="funcional" data-cat="ESP32 IoT">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">nov 2025</span></div>
+  <h3>Fundamentos Wi-Fi y Bluetooth en ESP32</h3>
+  <p>Medición de RSSI en el campus, LED controlado desde el navegador, 6 LEDs con slider web, LED por Bluetooth serie y decodificación de un control infrarrojo.</p>
+  <div class="cat-imgs"><figure><img src="assets/img/wifi-slider-leds.jpg" alt="Seis LEDs controlados por slider web" loading="lazy"><figcaption>Seis LEDs controlados por slider web</figcaption></figure><figure><img src="assets/img/wifi-esp32-rssi.jpg" alt="ESP32 en la prueba de conexión" loading="lazy"><figcaption>ESP32 en la prueba de conexión</figcaption></figure></div>
+  <p class="evid"><span class="ev ev-reporte">Documentado en reporte</span> Reportes con fotos de los montajes, capturas del navegador y del monitor serie, y video del control IR.</p>
+  <div class="chips"><span>Wi-Fi STA</span><span>RSSI</span><span>WebServer</span><span>Bluetooth SPP</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/fundamentos-wifi" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="funcional" data-cat="ESP32 Arduino IoT">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">abr – nov 2025</span></div>
+  <h3>Electronivel</h3>
+  <p>Monitor de nivel de agua de un tinaco por electrodos (5 niveles, filtro por moda de 5 lecturas) y por ultrasonido con LCD, con versiones que controlan un relé y envían el nivel por Bluetooth.</p>
+  
+  <p class="evid"><span class="ev ev-codigo">Verificado en código</span> Código fuente de 11 versiones en dos computadoras.</p>
+  <div class="chips"><span>ESP32</span><span>BluetoothSerial</span><span>HC-SR04</span><span>LCD I²C</span><span>HC-05</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/electronivel" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="funcional" data-cat="ESP32">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">jun 2026</span></div>
+  <h3>Tamagotchi</h3>
+  <p>Mascota virtual en OLED con tres botones, minijuegos, evolución según cuidados y partida guardada en EEPROM.</p>
+  
+  <p class="evid"><span class="ev ev-codigo">Verificado en código</span> Código fuente de 374 líneas.</p>
+  <div class="chips"><span>ESP32</span><span>SSD1306</span><span>EEPROM</span><span>Máquina de estados</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/tamagotchi" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="desarrollo" data-cat="Software APIs">
+  <div class="feat-top"><span class="st st-desarrollo" title="En construcción activa">En desarrollo</span><span class="mono muted">ene 2026</span></div>
+  <h3>App móvil de AURA</h3>
+  <p>Cliente BLE que escanea la lámpara, se suscribe a su estado y envía color, brillo y modos.</p>
+  
+  <p class="evid"><span class="ev ev-codigo">Verificado en código</span> Código fuente de la app.</p>
+  <div class="chips"><span>React Native</span><span>Expo</span><span>BLE</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/aura-lampara-rgb-esp32/tree/main/app" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="funcional" data-cat="Arduino Robótica">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">may 2026</span></div>
+  <h3>Smart Robot Car 4 en 1 (kit modificado)</h3>
+  <p>Firmware de un kit comercial al que añadí control Bluetooth y acciones con duración.</p>
+  
+  <p class="evid"><span class="ev ev-codigo">Verificado en código</span> Código; las funciones de fábrica están marcadas como no modificadas.</p>
+  <div class="chips"><span>Arduino UNO</span><span>IR</span><span>Ultrasonido</span><span>Bluetooth</span></div>
+  <div class="links-row"><a class="go" href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/smart-robot-car-kit" target="_blank" rel="noopener">Código en GitHub <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="cat" data-estado="desarrollo" data-cat="ESP32 IoT">
+  <div class="feat-top"><span class="st st-desarrollo" title="En construcción activa">En desarrollo</span><span class="mono muted">sep 2026</span></div>
+  <h3>Red Centinela · nodo IoT para vigilar plagas</h3>
+  <p>Nodo de campo autónomo con cámara, dos sensores ambientales, reloj de tiempo real, registro en microSD y enlace LoRa a un receptor Heltec LoRa 32, alimentado por panel solar con medición de consumo. Bus I²C compartido (BME280, DS3231, INA219) y bus SPI compartido (SD y LoRa con CS separados).</p>
+  
+  <p class="evid"><span class="ev ev-declarado">Declarado por el autor</span> Guía de armado propia (sep 2026) y prueba de flash/PSRAM de la placa. Firmware de sensores, cámara, LoRa y deep sleep en desarrollo.</p>
+  <div class="chips"><span>FireBeetle 2 ESP32-S3 N16R8</span><span>OV2640</span><span>BME280 ×2</span><span>DS3231</span><span>microSD</span><span>LoRa RFM95W 915 MHz</span><span>INA219</span><span>Solar + LiPo</span></div>
+  
+</article>
+<article class="cat" data-estado="funcional" data-cat="ESP32">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">nov 2025</span></div>
+  <h3>Control de acceso inteligente</h3>
+  <p>Puerta que se abre con tarjeta RFID, detecta presencia con ultrasonido y se controla también por infrarrojo, con estado en pantalla. Cinco versiones (CircuitoCerrado v1–v2 y puerta 1–3).</p>
+  
+  <p class="evid"><span class="ev ev-declarado">Declarado por el autor</span> Código y reporte técnico del proyecto.</p>
+  <div class="chips"><span>ESP32</span><span>RC522</span><span>HC-SR04</span><span>Servo</span><span>IR</span><span>OLED</span><span>LCD I²C</span></div>
+  
+</article>
+<article class="cat" data-estado="funcional" data-cat="Arduino Robótica">
+  <div class="feat-top"><span class="st st-funcional" title="Terminado y funcionando">Funcional</span><span class="mono muted">ago 2026</span></div>
+  <h3>Carro de ruta programada</h3>
+  <p>Carro que recorre un cuadrado con una secuencia de movimientos temporizados, sin sensores.</p>
+  
+  <p class="evid"><span class="ev ev-declarado">Declarado por el autor</span> Código fuente.</p>
+  <div class="chips"><span>Arduino</span><span>L298N</span></div>
+  
+</article></div>
+  </section>
+
+  <section class="part" id="software" aria-labelledby="h-sw">
+    <div class="part-head"><span class="eyebrow">// software</span><h2 id="h-sw">Aplicaciones y servicios</h2><p>Proyectos de software que complementan el trabajo con hardware.</p></div>
+    <div class="sws"><div class="sw"><span class="mono small muted">PWA · Supabase · Web Push</span><b>Llegué Seguro</b><span class="small">App web de asistencia escolar con QR dinámico y notificaciones a las familias, diseñada para una telesecundaria.</span></div><p class="sw-otros small"><b>Otros:</b> <a href="https://github.com/nshtpdrz/quien-te-reprobo" target="_blank" rel="noopener">¿Quién me reprobó?</a> <span class="muted">(Juego tipo Clue de Día de Muertos)</span> · <a href="https://github.com/nshtpdrz/BlackJack21" target="_blank" rel="noopener">BlackJack 21</a> <span class="muted">(Juego de cartas en el navegador)</span> · <a href="https://github.com/nshtpdrz/7-0MX" target="_blank" rel="noopener">MX 7-0</a> <span class="muted">(Draft de campeones)</span></p></div>
+  </section>
+
+  <section class="part" id="perfil" aria-labelledby="h-perfil">
+    <div class="part-head"><span class="eyebrow">// perfil</span><h2 id="h-perfil">Perfil técnico</h2><p>Separado por nivel de evidencia. Una librería en un archivo de dependencias no cuenta como dominio.</p></div>
+    <div class="skills">
+      <div class="sk"><h3>Experiencia práctica demostrada</h3><ul class="kv"><li><b>Firmware en C/C++ para ESP32 y Arduino UNO</b><span>Todos los proyectos (34 sketches revisados)</span></li><li><b>Servidores HTTP embebidos y modo Access Point</b><span>AURA, Batalla Naval, prácticas Wi-Fi</span></li><li><b>Clientes HTTPS hacia APIs externas (Spotify, Gemini)</b><span>AURA, Calaverita</span></li><li><b>Audio digital I²S: captura (INMP441) y reproducción (MAX98357A)</b><span>Calaverita, Bocina</span></li><li><b>Bluetooth Classic: A2DP, AVRCP y SPP</b><span>Bocina, Electronivel, prácticas Bluetooth</span></li><li><b>Buses I²C (incluidos dos buses simultáneos), SPI y UART</b><span>Calaverita, RFID, Robot 4WD</span></li><li><b>PWM, ADC y control de motores con puente H</b><span>AURA, Robot 4WD</span></li><li><b>Sensores HC-SR04, PIR HC-SR501, KY-037, MFRC522 e IR NEC</b><span>AURA, Robot, RFID, pluma vehicular</span></li><li><b>Máquinas de estados y lazos no bloqueantes con millis()</b><span>Robot 4WD, Tamagotchi, Batalla Naval</span></li><li><b>Simulación de circuitos en Tinkercad</b><span>Pluma vehicular</span></li></ul></div>
+      <div class="sk"><h3>Tecnologías utilizadas en proyectos</h3><ul class="kv"><li><b>FreeRTOS</b><span>Tarea de audio fijada a un núcleo en la Calaverita</span></li><li><b>EEPROM</b><span>Persistencia de partida en el Tamagotchi</span></li><li><b>ArduinoJson y SpotifyArduino</b><span>Consulta de la API de Spotify en AURA</span></li><li><b>React Native, Expo y react-native-ble-plx</b><span>App cliente BLE de AURA</span></li><li><b>HTML, CSS y JavaScript embebidos en firmware</b><span>Paneles web de AURA y Batalla Naval</span></li><li><b>Supabase y PWA</b><span>Llegué Seguro</span></li><li><b>Cisco Packet Tracer</b><span>Prácticas de VLAN en Redes Emergentes</span></li></ul></div>
+      <div class="sk"><h3>Conocimientos por profundizar</h3><ul class="plain"><li>MQTT y plataformas de telemetría</li><li>Procesamiento digital de señales (FFT) para audio</li><li>BLE del lado del ESP32 (servidor GATT)</li><li>Gestión de energía y modos sleep del ESP32</li><li>Validación de certificados TLS y manejo seguro de secretos</li><li>Diseño de PCB</li><li>Control de versiones y pruebas para firmware</li><li>LoRa (RFM95W), deep sleep y alimentación solar (Red Centinela, en armado)</li><li>ESP32-S3 con PSRAM y cámara OV2640</li></ul></div>
+      <div class="sk"><h3>Intereses profesionales</h3><ul class="plain"><li>Sistemas embebidos y firmware</li><li>ESP32, Arduino y electrónica aplicada</li><li>IoT, telemetría y adquisición de datos</li><li>Sensores, actuadores y sistemas de control</li><li>Redes, comunicaciones y protocolos</li><li>Robótica y automatización</li><li>Integración de hardware con software, APIs y servicios web</li></ul></div>
+    </div>
+    <h3 class="sub">Formación</h3>
+    <div class="edu"><div class="card"><h4>Ingeniería en Tecnologías de la Información y Comunicaciones</h4><p class="mono small">TecNM Campus Pachuca · ago 2023 – jun 2028 · 7.º semestre</p><p>Materias aplicadas en los proyectos: Tecnologías Inalámbricas, Arquitectura de Computadoras, Circuitos Eléctricos y Electrónicos, Telecomunicaciones, Redes de Computadoras y Redes Emergentes.</p></div></div>
+    <div class="two-cards"><div class="card"><h4>Certificaciones</h4><ul class="kv"><li><b>AWS Academy Graduate · Cloud Foundations</b><span>Amazon Web Services · sep 2025</span></li><li><b>B2 First (First Certificate in English)</b><span>Cambridge English · jun 2025</span></li><li><b>Introduction to HTML, CSS &amp; JavaScript</b><span>IBM · jun 2026</span></li></ul></div><div class="card"><h4>Idiomas</h4><p>Español: Nativo · Inglés: B2 · Cambridge First</p></div></div>
+    <h3 class="sub">Experiencia</h3>
+    <ol class="exp"><li><span class="mono when">Oct 2026 – actual</span><div><h4>Profesor de robótica</h4><p class="org">Colegio Genaro Guzmán Mayer, Pachuca · jornada parcial, presencial · <i>Docencia</i></p><p>Imparto un taller STEAM de robótica para 4.º de primaria a 1.º de secundaria: una hora semanal con Arduino UNO R3, robot 2WD seguidor de línea y mBlock 5, con aprendizaje basado en proyectos y preparación de un equipo para RoboFest LATAM.</p></div></li><li><span class="mono when">Mar 2026</span><div><h4>Event Staff · RoboFest LATAM 2026</h4><p class="org">RoboFest LATAM · <i>Voluntariado</i></p><p>Atención a participantes y soporte al equipo organizador de la competencia de robótica.</p></div></li><li><span class="mono when">Nov 2025</span><div><h4>Event Support Assistant · HackaTec 2025</h4><p class="org">Tecnológico Nacional de México · <i>Apoyo logístico</i></p><p>Apoyo en la organización del evento de innovación tecnológica.</p></div></li></ol>
+  </section>
+
+  <section class="part" id="documentacion" aria-labelledby="h-doc">
+    <div class="part-head"><span class="eyebrow">// código</span><h2 id="h-doc">Fichas, código y demostraciones</h2>
+      <p>Código fuente de cada proyecto en GitHub. Las fichas técnicas también existen en PDF, junto con un CV técnico y un resumen ejecutivo.</p></div>
+    <ul class="doclist"><li><a href="proyectos/aura.html">AURA · Lámpara RGB inteligente</a> <span class="st st-funcional" title="Terminado y funcionando">Funcional</span></li><li><a href="proyectos/calaverita.html">Calaverita parlante con IA</a> <span class="st st-desarrollo" title="En construcción activa">En desarrollo</span></li><li><a href="proyectos/bocina.html">Bocina Inteligente</a> <span class="st st-funcional" title="Terminado y funcionando">Funcional</span></li><li><a href="proyectos/robot-4wd.html">Robot 4WD: Bluetooth, sumo y seguidor de línea</a> <span class="st st-funcional" title="Terminado y funcionando">Funcional</span></li><li><a href="proyectos/batalla-naval.html">Batalla Naval IoT</a> <span class="st st-funcional" title="Terminado y funcionando">Funcional</span></li></ul>
+    <h3 class="sub">Índice de código y demostraciones</h3>
+    <div class="tablebox"><table><thead><tr><th>Proyecto</th><th>Repositorio</th><th>Documentación</th></tr></thead><tbody><tr><td><a href="proyectos/aura.html">AURA</a></td><td><a href="https://github.com/nshtpdrz/aura-lampara-rgb-esp32" target="_blank" rel="noopener">nshtpdrz/aura-lampara-rgb-esp32 ↗</a></td><td>Reporte con fotos</td></tr><tr><td><a href="proyectos/calaverita.html">Calaverita</a></td><td><a href="https://github.com/nshtpdrz/calaverita-parlante-esp32" target="_blank" rel="noopener">nshtpdrz/calaverita-parlante-esp32 ↗</a></td><td>Foto y video</td></tr><tr><td><a href="proyectos/bocina.html">Bocina Inteligente</a></td><td><a href="https://github.com/nshtpdrz/bocina-inteligente-esp32" target="_blank" rel="noopener">nshtpdrz/bocina-inteligente-esp32 ↗</a></td><td>Ficha técnica</td></tr><tr><td><a href="proyectos/robot-4wd.html">Robot 4WD</a></td><td><a href="https://github.com/nshtpdrz/robot-4wd-sumo-seguidor" target="_blank" rel="noopener">nshtpdrz/robot-4wd-sumo-seguidor ↗</a></td><td>Foto y video</td></tr><tr><td><a href="proyectos/batalla-naval.html">Batalla Naval</a></td><td><a href="https://github.com/nshtpdrz/batalla-naval-esp32" target="_blank" rel="noopener">nshtpdrz/batalla-naval-esp32 ↗</a></td><td>Ficha técnica</td></tr><tr><td>Lector y escritor RFID</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/rfid" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/rfid ↗</a></td><td>Reporte con fotos</td></tr><tr><td>Pluma de acceso vehicular</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/pluma-vehicular" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/pluma-vehicular ↗</a></td><td><a href="https://www.tinkercad.com/things/6RjAkW2elnn-evaluacion-u2?sharecode=sfVD-J4Kjnqxw5WdH3lfJSh7hJJ-T6jAI3IZTtBiVzQ" target="_blank" rel="noopener">Simulación Tinkercad ↗</a></td></tr><tr><td>Fundamentos Wi-Fi y Bluetooth en ESP32</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/fundamentos-wifi" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/fundamentos-wifi ↗</a></td><td>Reporte con fotos</td></tr><tr><td>Electronivel</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/electronivel" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/electronivel ↗</a></td><td>README</td></tr><tr><td>Tamagotchi</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/tamagotchi" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/tamagotchi ↗</a></td><td>README</td></tr><tr><td>App móvil de AURA</td><td><a href="https://github.com/nshtpdrz/aura-lampara-rgb-esp32/tree/main/app" target="_blank" rel="noopener">nshtpdrz/aura-lampara-rgb-esp32/tree/main/app ↗</a></td><td>README</td></tr><tr><td>Smart Robot Car 4 en 1 (kit modificado)</td><td><a href="https://github.com/nshtpdrz/esp32-arduino-proyectos/tree/main/smart-robot-car-kit" target="_blank" rel="noopener">nshtpdrz/esp32-arduino-proyectos/tree/main/smart-robot-car-kit ↗</a></td><td>README</td></tr></tbody></table></div>
+  </section>
+
+  <section class="part" id="contacto" aria-labelledby="h-con">
+    <div class="contact">
+      <h2 id="h-con">Contacto</h2>
+      <p>Busco una residencia profesional en desarrollo tecnológico, firmware, IoT o integración de hardware y software. Puedo mostrar en persona los prototipos y su código.</p>
+      <dl><div><dt>Correo</dt><dd>nashito.martinez.24@gmail.com</dd></div><div><dt>GitHub</dt><dd><a href="https://github.com/nshtpdrz" target="_blank" rel="noopener" style="color:inherit">github.com/nshtpdrz</a></dd></div><div><dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/daniel-ignacio-pedraza-mart%C3%ADnez-7b225a325" target="_blank" rel="noopener" style="color:inherit">linkedin.com/in/daniel-ignacio-pedraza-martínez-7b225a325</a></dd></div><div><dt>Institución</dt><dd>Tecnológico Nacional de México, Campus Pachuca</dd></div><div><dt>Ubicación</dt><dd>Pachuca, Hidalgo, México</dd></div></dl>
+    </div>
+  </section>
+  <footer class="foot">Datos técnicos tomados del código fuente y de los reportes académicos del autor. Actualizado en octubre de 2026.</footer>
+</main>
+<script>
+(function(){
+  var box=document.getElementById('filtros'); box.hidden=false;
+  var sel={cat:'all',estado:'all'};
+  var cards=[].slice.call(document.querySelectorAll('#cats .cat'));
+  var vacio=document.getElementById('vacio');
+  function apply(){
+    var n=0;
+    cards.forEach(function(c){
+      var ok=(sel.cat==='all'||c.dataset.cat.split(' ').indexOf(sel.cat)>=0)&&(sel.estado==='all'||c.dataset.estado===sel.estado);
+      c.hidden=!ok; if(ok)n++;
+    });
+    vacio.hidden=n>0;
+  }
+  box.addEventListener('click',function(ev){
+    var b=ev.target.closest('.fb'); if(!b)return;
+    sel[b.dataset.group]=b.dataset.v;
+    box.querySelectorAll('.fb[data-group="'+b.dataset.group+'"]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    apply();
+  });
+})();
+</script>
+
+</body>
+</html>
