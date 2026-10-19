@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Zapatea y toca La Bamba desde tu celular. Parte del póster Veracruz, cultura viva.">
+<meta name="theme-color" content="#102536">
+<title>Fandango virtual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@700&display=swap">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+[hidden] { display: none !important; }
+</style>
+<style>
+/* Layout: una sola columna de "escenario" nocturno: papel picado → título → tarima (protagonista) → jarana → datos. Look único (noche de fandango), sin modo claro. */
+:root {
+  --night: #102536;
+  --night-2: #17344A;
+  --ink: #FFF6E6;
+  --muted: #BFD0DA;
+  --wood: #B67A45;
+  --wood-dark: #7A4A26;
+  --red: #E0473F;
+  --yellow: #F2B632;
+  --blue: #3FB0D6;
+  --pink: #EE7AA8;
+  --green: #5BB874;
+  --display: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+  --body: 'Atkinson Hyperlegible', 'Segoe UI', sans-serif;
+  --hand: 'Caveat', 'Comic Sans MS', cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--night); }
+body { color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; }
+.wrap { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 40px; display: flex; flex-direction: column; gap: 22px; }
+
+.picado { display: flex; gap: 6px; justify-content: center; padding-top: 10px; overflow: hidden; }
+.flag { width: 52px; height: 46px; flex-shrink: 0; clip-path: polygon(0 0, 100% 0, 100% 80%, 87% 100%, 75% 80%, 62% 100%, 50% 80%, 37% 100%, 25% 80%, 12% 100%, 0 80%); position: relative; }
+.flag::after { content: ""; position: absolute; left: 50%; top: 40%; width: 14px; height: 14px; transform: translate(-50%, -50%) rotate(45deg); background: var(--night); }
+.flag:nth-child(5n+1) { background: var(--red); }
+.flag:nth-child(5n+2) { background: var(--yellow); }
+.flag:nth-child(5n+3) { background: var(--blue); }
+.flag:nth-child(5n+4) { background: var(--pink); }
+.flag:nth-child(5n+5) { background: var(--green); }
+
+header { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.16em; color: var(--yellow); }
+h1 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(44px, 12vw, 76px); line-height: 0.92; letter-spacing: -0.02em; text-wrap: balance; }
+h1 span { color: var(--red); }
+.lead { margin: 4px 0 0; color: var(--muted); max-width: 60ch; }
+.steps { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.steps li { background: var(--night-2); border-radius: 999px; padding: 4px 12px; font-size: 14px; }
+.steps b { color: var(--yellow); }
+
+h2 { margin: 0; font-family: var(--display); font-weight: 800; font-size: 24px; line-height: 1.1; }
+.panel { display: flex; flex-direction: column; gap: 12px; }
+
+/* Son control */
+.son-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { font: inherit; font-weight: 700; border: 0; border-radius: 14px; min-height: 52px; padding: 0 20px; cursor: pointer; color: var(--night); background: var(--yellow); }
+.btn:focus-visible, .pad:focus-visible, .chord:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.btn.on { background: var(--red); color: var(--ink); }
+.beats { display: flex; gap: 6px; }
+.beat { width: 18px; height: 18px; border-radius: 50%; background: var(--night-2); border: 2px solid #2D5571; }
+.beat.acc { width: 22px; height: 22px; }
+.beat.lit { background: var(--yellow); border-color: var(--yellow); }
+.now { font-family: var(--display); font-weight: 800; font-size: 20px; min-width: 70px; }
+.tempo { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.tempo input { accent-color: var(--yellow); width: 120px; }
+
+/* Tarima */
+.tarima { position: relative; height: 230px; border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background:
+  repeating-linear-gradient(90deg, transparent 0 86px, rgba(0,0,0,0.25) 86px 89px),
+  linear-gradient(180deg, #C58A53, var(--wood)); box-shadow: inset 0 -14px 0 var(--wood-dark); }
+.tarima.shake { animation: thump 0.12s ease-out; }
+@keyframes thump { 50% { transform: translateY(3px); } }
+.pad { font: inherit; border: 0; background: transparent; color: #2B1606; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 0 0 14px; position: relative; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.pad + .pad { border-left: 3px dashed rgba(43, 22, 6, 0.35); }
+.pad strong { font-family: var(--display); font-weight: 800; font-size: 30px; }
+.pad span { font-size: 14px; font-weight: 700; }
+.pad svg { width: 48px; height: 48px; }
+.pad.hit { background: rgba(255, 246, 230, 0.22); }
+.ring { position: absolute; width: 30px; height: 30px; border: 3px solid var(--ink); border-radius: 50%; pointer-events: none; animation: ring 0.45s ease-out forwards; }
+@keyframes ring { to { transform: scale(5); opacity: 0; } }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--night-2); border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; }
+.stat b { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.feedback { font-family: var(--hand); font-size: 30px; line-height: 1; min-height: 30px; color: var(--yellow); }
+
+/* Jarana */
+.jarana { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.chord { font: inherit; border: 0; border-radius: 16px; min-height: 92px; cursor: pointer; color: var(--night); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: transform 0.08s; }
+.chord strong { font-family: var(--display); font-weight: 800; font-size: 26px; }
+.chord span { font-size: 13px; font-weight: 700; }
+.chord.c1 { background: var(--blue); }
+.chord.c2 { background: var(--pink); }
+.chord.c3 { background: var(--green); }
+.chord.hit { transform: scale(0.95); filter: brightness(1.15); }
+.strings { display: flex; flex-direction: column; gap: 7px; padding: 4px 6px; }
+.strings i { display: block; height: 2px; background: #6E8EA3; border-radius: 1px; }
+.strings.vibe i { animation: vibe 0.35s ease-out; }
+@keyframes vibe { 25% { transform: translateY(-2px); } 50% { transform: translateY(2px); } 75% { transform: translateY(-1px); } }
+
+/* Sabías que */
+.fact { background: var(--night-2); border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.fact .tag { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.14em; color: var(--pink); }
+.fact p { margin: 0; font-size: 17px; }
+.fact .btn { align-self: flex-start; background: var(--night); color: var(--ink); border: 2px solid #2D5571; min-height: 44px; }
+.note { font-size: 14px; color: var(--muted); }
+.sound { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; background: var(--night-2); border: 2px solid var(--yellow); border-radius: 16px; padding: 12px 14px; }
+.sound .btn { min-height: 56px; font-size: 18px; }
+.sound p { margin: 0; flex: 1 1 200px; min-width: 0; font-size: 15px; }
+.sound.ready { border-color: var(--green); }
+.sound.ready .btn { background: var(--green); }
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid #2D5571; padding-top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tarima.shake, .strings.vibe i, .ring { animation: none; }
+  .ring { display: none; }
+}
+@media (max-width: 420px) {
+  .tarima { height: 200px; }
+  .chord { min-height: 80px; }
+  .stat b { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="picado" aria-hidden="true">
+  <div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div><div class="flag"></div>
+</div>
+
+<main class="wrap">
+  <header>
+    <span class="eyebrow">VERACRUZ · SON JAROCHO</span>
+    <h1>Fandango <span>virtual</span></h1>
+    <p class="lead">En el fandango, la gente se reúne a cantar, tocar la jarana y zapatear sobre una tarima de madera. Aquí puedes hacer las tres cosas desde tu celular.</p>
+    <ol class="steps">
+      <li><b>1</b> Toca La Bamba</li>
+      <li><b>2</b> Zapatea en la tarima</li>
+      <li><b>3</b> Rasguea la jarana</li>
+    </ol>
+  </header>
+
+  <section class="sound" id="sound">
+    <button class="btn" id="unlock" type="button">Activar sonido</button>
+    <p id="sound-msg">Toca el botón para encender el audio. Vas a oír un rasgueo de prueba.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="t-son">
+    <h2 id="t-son">El son: La Bamba</h2>
+    <p class="note" style="font-size: 15px; margin: 0; max-width: 60ch">Es el son jarocho más famoso de Veracruz. Es tradicional: no tiene un autor conocido y sus versos pasan de generación en generación. Aquí suenan la jarana con sus acordes Do, Fa y Sol y el requinto haciendo su arpegio. <a href="https://es.wikipedia.org/wiki/La_bamba" style="color: var(--yellow)">Conoce su historia</a></p>
+    <div class="son-bar">
+      <button class="btn" id="play" type="button" aria-pressed="false">Tocar La Bamba</button>
+      <div class="beats" id="beats" aria-hidden="true">
+        <i class="beat acc"></i><i class="beat"></i><i class="beat"></i><i class="beat acc"></i><i class="beat"></i><i class="beat"></i>
+      </div>
+      <span class="now" id="now" aria-live="polite">—</span>
+    </div>
+    <label class="tempo" for="tempo">Velocidad <input id="tempo" type="range" min="80" max="150" value="118"> <span id="tempo-val">118</span></label>
+  </section>
+
+  <section class="panel" aria-labelledby="t-tarima">
+    <h2 id="t-tarima">La tarima</h2>
+    <div class="tarima" id="tarima">
+      <button class="pad" id="tacon" type="button">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#2B1606" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 30 C 10 18 18 10 26 10 L 34 10 L 34 30 Z"></path><path d="M24 30 L 24 40 L 34 40 L 34 30"></path></svg>
+        <strong>Tacón</strong><span>golpe grave</span>
+      </button>
+      <button class="pad" id="punta" type="button">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#2B1606" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 34 L 30 34 C 38 34 42 30 42 26 L 30 22 L 18 14 L 8 14 Z"></path></svg>
+        <strong>Punta</strong><span>golpe seco</span>
+      </button>
+    </div>
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+    <div class="stats">
+      <div class="stat"><b id="s-total">0</b><span>zapateados</span></div>
+      <div class="stat"><b id="s-good">0</b><span>a tiempo</span></div>
+      <div class="stat"><b id="s-streak">0</b><span>mejor racha</span></div>
+    </div>
+    <p class="note">Con el son encendido, cuenta cuántos golpes caen a tiempo. En computadora también puedes usar las teclas F (tacón) y J (punta).</p>
+  </section>
+
+  <section class="panel" aria-labelledby="t-jarana">
+    <h2 id="t-jarana">La jarana</h2>
+    <div class="strings" id="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="jarana">
+      <button class="chord c1" type="button" data-chord="C"><strong>Do</strong><span>acorde I</span></button>
+      <button class="chord c2" type="button" data-chord="F"><strong>Fa</strong><span>acorde IV</span></button>
+      <button class="chord c3" type="button" data-chord="G"><strong>Sol</strong><span>acorde V</span></button>
+    </div>
+    <p class="note">Muchos sones se tocan con solo estos tres acordes. Prueba el orden Do, Fa, Sol, Sol.</p>
+  </section>
+
+  <section class="fact" aria-live="polite">
+    <span class="tag">¿SABÍAS QUE…?</span>
+    <p id="fact-text">El son jarocho se toca con jarana, requinto y arpa, y se acompaña con zapateado sobre la tarima.</p>
+    <button class="btn" id="next-fact" type="button">Otro dato</button>
+  </section>
+
+  <p class="note">¿No se oye nada? Toca «Activar sonido», sube el volumen y, en iPhone, quita el modo silencio (el interruptor del costado).</p>
+
+  <footer>Parte del póster <b>Veracruz, cultura viva</b> · Daniel Ignacio Pedraza Martínez · TecNM, Instituto Tecnológico de Pachuca. Los sonidos se generan en tu teléfono; no son grabaciones.</footer>
+</main>
+
+<script>
+(() => {
+  let ctx = null, master = null, noiseBuf = null;
+  const pluckCache = new Map();
+
+  function audio() {
+    if (!ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      ctx = new AC();
+      master = ctx.createGain();
+      master.gain.value = 0.9;
+      const comp = ctx.createDynamicsCompressor();
+      master.connect(comp); comp.connect(ctx.destination);
+      noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 0.3, ctx.sampleRate);
+      const d = noiseBuf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    }
+    if (ctx.state !== 'running') { const p = ctx.resume(); if (p && p.catch) p.catch(() => {}); }
+    return ctx;
+  }
+  // Ejecuta fn cuando el audio ya esté corriendo (en celular el primer toque lo enciende)
+  function whenReady(fn) {
+    const c = audio();
+    if (c.state === 'running') fn();
+    else c.resume().then(fn).catch(() => {});
+  }
+  function unlock() {
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    const c = audio();
+    try { const b = c.createBuffer(1, 1, c.sampleRate); const s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0); } catch (e) {}
+    return c;
+  }
+  function showState() {
+    const box = document.getElementById('sound'), msg = document.getElementById('sound-msg'), btn = document.getElementById('unlock');
+    if (ctx && ctx.state === 'running') {
+      box.classList.add('ready'); btn.textContent = 'Sonido activo'; msg.textContent = '¡Listo! Ya puedes zapatear y tocar. Si no oyes nada, sube el volumen o quita el modo silencio.';
+    } else {
+      box.classList.remove('ready'); btn.textContent = 'Activar sonido'; msg.textContent = 'Toca el botón para encender el audio. Vas a oír un rasgueo de prueba.';
+    }
+  }
+
+  // --- Zapateado: golpe de madera ---
+  function stomp(kind, t) {
+    const c = audio(); t = t ?? c.currentTime;
+    const heel = kind === 'tacon';
+    const n = c.createBufferSource(); n.buffer = noiseBuf;
+    const bp = c.createBiquadFilter(); bp.type = 'bandpass';
+    bp.frequency.value = heel ? 700 : 2200; bp.Q.value = heel ? 1.2 : 1.8;
+    const ng = c.createGain();
+    ng.gain.setValueAtTime(heel ? 0.9 : 1.1, t);
+    ng.gain.exponentialRampToValueAtTime(0.001, t + (heel ? 0.09 : 0.05));
+    n.connect(bp); bp.connect(ng); ng.connect(master);
+    n.start(t); n.stop(t + 0.12);
+    const o = c.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(heel ? 150 : 260, t);
+    o.frequency.exponentialRampToValueAtTime(heel ? 55 : 120, t + 0.12);
+    const og = c.createGain();
+    og.gain.setValueAtTime(heel ? 1.0 : 0.45, t);
+    og.gain.exponentialRampToValueAtTime(0.001, t + (heel ? 0.16 : 0.08));
+    o.connect(og); og.connect(master);
+    o.start(t); o.stop(t + 0.2);
+  }
+
+  // --- Jarana: cuerdas punteadas (Karplus-Strong) ---
+  function pluckBuffer(freq) {
+    const key = Math.round(freq * 10);
+    if (pluckCache.has(key)) return pluckCache.get(key);
+    const c = audio(), sr = c.sampleRate, len = Math.floor(sr * 1.4);
+    const buf = c.createBuffer(1, len, sr), d = buf.getChannelData(0);
+    const N = Math.max(2, Math.round(sr / freq));
+    const ring = new Float32Array(N);
+    for (let i = 0; i < N; i++) ring[i] = Math.random() * 2 - 1;
+    let idx = 0;
+    for (let i = 0; i < len; i++) {
+      const next = (idx + 1) % N;
+      const v = ring[idx];
+      d[i] = v;
+      ring[idx] = 0.4985 * (v + ring[next]);
+      idx = next;
+    }
+    pluckCache.set(key, buf);
+    return buf;
+  }
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+  const CHORDS = {
+    C: { name: 'Do', notes: [55, 60, 64, 67, 72], bass: 36 },
+    F: { name: 'Fa', notes: [57, 60, 65, 69, 72], bass: 41 },
+    G: { name: 'Sol', notes: [55, 59, 62, 67, 71], bass: 43 }
+  };
+  function strum(chord, t, up, vol) {
+    const c = audio(); t = t ?? c.currentTime; vol = vol ?? 0.5;
+    const notes = up ? [...CHORDS[chord].notes].reverse() : CHORDS[chord].notes;
+    notes.forEach((m, i) => {
+      const s = c.createBufferSource(); s.buffer = pluckBuffer(hz(m));
+      const g = c.createGain(); g.gain.value = vol * (up ? 0.7 : 1);
+      const hp = c.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 150;
+      s.connect(hp); hp.connect(g); g.connect(master);
+      s.start(t + i * 0.014);
+    });
+  }
+  function leona(chord, t) {
+    const c = audio();
+    const s = c.createBufferSource(); s.buffer = pluckBuffer(hz(CHORDS[chord].bass));
+    const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 700;
+    const g = c.createGain(); g.gain.value = 0.9;
+    s.connect(lp); lp.connect(g); g.connect(master);
+    s.start(t);
+  }
+
+  // --- UI helpers ---
+  const $ = (id) => document.getElementById(id);
+  const strings = $('strings');
+  function vibe() { strings.classList.remove('vibe'); void strings.offsetWidth; strings.classList.add('vibe'); }
+
+  // --- Requinto: una sola cuerda brillante ---
+  function requinto(m, t, vol) {
+    const c = audio();
+    const s = c.createBufferSource(); s.buffer = pluckBuffer(hz(m));
+    const hp = c.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 300;
+    const g = c.createGain(); g.gain.value = vol;
+    s.connect(hp); hp.connect(g); g.connect(master);
+    s.start(t);
+  }
+
+  // --- La Bamba: Do, Fa, Sol, Sol; un acorde cada 3 corcheas ---
+  const PROG = ['C', 'F', 'G', 'G'];
+  const LEAD = { C: [72, 76, 79], F: [77, 81, 84], G: [79, 83, 86], G2: [86, 83, 79] };
+  const STRUMS = { 0: 'down', 2: 'up', 3: 'down', 5: 'up' };
+  let playing = false, step = 0, nextTime = 0, timer = null, eighth = 0.17;
+  const beatTimes = [];
+  const beatsEls = [...document.querySelectorAll('.beat')];
+  function setTempo(v) { eighth = 60 / v / 3; $('tempo-val').textContent = v; }
+  setTempo(+$('tempo').value);
+  $('tempo').addEventListener('input', (e) => setTempo(+e.target.value));
+
+  function schedule() {
+    const c = ctx;
+    while (nextTime < c.currentTime + 0.12) {
+      const half = Math.floor(step / 3) % PROG.length;
+      const pos = step % 6;
+      const sub = step % 3;
+      const chord = PROG[half];
+      if (STRUMS[pos]) strum(chord, nextTime, STRUMS[pos] === 'up', sub === 0 ? 0.32 : 0.2);
+      if (sub === 0) leona(chord, nextTime);
+      const line = half === 3 ? LEAD.G2 : LEAD[chord];
+      requinto(line[sub], nextTime, sub === 0 ? 0.62 : 0.5);
+      beatTimes.push(nextTime);
+      if (beatTimes.length > 24) beatTimes.shift();
+      const when = (nextTime - c.currentTime) * 1000;
+      const p = pos, ch = chord;
+      setTimeout(() => {
+        if (!playing) return;
+        beatsEls.forEach((b, i) => b.classList.toggle('lit', i === p));
+        $('now').textContent = CHORDS[ch].name;
+        if (STRUMS[p]) vibe();
+      }, Math.max(0, when));
+      nextTime += eighth;
+      step++;
+    }
+  }
+  function startSon() {
+    const c = unlock();
+    if (c.state !== 'running') { c.resume().then(() => { c.onstatechange = showState; showState(); if (!playing) startSon(); }).catch(() => {}); return; }
+    playing = true; step = 0; nextTime = c.currentTime + 0.08; beatTimes.length = 0;
+    timer = setInterval(schedule, 25); schedule();
+    $('play').textContent = 'Parar La Bamba'; $('play').classList.add('on'); $('play').setAttribute('aria-pressed', 'true');
+  }
+  function stopSon() {
+    playing = false; clearInterval(timer);
+    beatsEls.forEach((b) => b.classList.remove('lit'));
+    $('now').textContent = '—';
+    $('play').textContent = 'Tocar La Bamba'; $('play').classList.remove('on'); $('play').setAttribute('aria-pressed', 'false');
+  }
+  $('play').addEventListener('click', () => (playing ? stopSon() : startSon()));
+  window.__fandango = { state: () => (ctx ? ctx.state : 'none') };
+
+  // --- Zapateado + puntaje ---
+  let total = 0, good = 0, streak = 0, best = 0;
+  const PRAISE = ['¡Eso, a tiempo!', '¡Qué zapateado!', '¡Así se baila!', '¡Arriba Veracruz!', '¡Sabroso!'];
+  const tarima = $('tarima');
+  function hit(kind, el, ev) {
+    const c = audio();
+    const t = c.currentTime;
+    whenReady(() => stomp(kind));
+    total++;
+    tarima.classList.remove('shake'); void tarima.offsetWidth; tarima.classList.add('shake');
+    el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 90);
+    const r = document.createElement('span'); r.className = 'ring';
+    const box = el.getBoundingClientRect();
+    const x = ev && ev.clientX ? ev.clientX - box.left : box.width / 2;
+    const y = ev && ev.clientY ? ev.clientY - box.top : box.height / 2;
+    r.style.left = (x - 15) + 'px'; r.style.top = (y - 15) + 'px';
+    el.appendChild(r); setTimeout(() => r.remove(), 460);
+    if (playing && beatTimes.length) {
+      const all = beatTimes.concat([beatTimes[beatTimes.length - 1] + eighth]);
+      const d = Math.min(...all.map((b) => Math.abs(b - t)));
+      if (d < Math.min(0.08, eighth * 0.3)) {
+        good++; streak++; best = Math.max(best, streak);
+        if (streak % 4 === 0) $('feedback').textContent = PRAISE[(streak / 4) % PRAISE.length];
+      } else {
+        streak = 0; $('feedback').textContent = '';
+      }
+    }
+    $('s-total').textContent = total; $('s-good').textContent = good; $('s-streak').textContent = best;
+  }
+  [['tacon', $('tacon')], ['punta', $('punta')]].forEach(([k, el]) => {
+    el.addEventListener('pointerdown', (e) => { e.preventDefault(); hit(k, el, e); });
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hit(k, el); } });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT')) return;
+    if (e.repeat) return;
+    if (e.key === 'f' || e.key === 'F') hit('tacon', $('tacon'));
+    if (e.key === 'j' || e.key === 'J') hit('punta', $('punta'));
+  });
+
+  // --- Jarana ---
+  let lastUp = false;
+  document.querySelectorAll('.chord').forEach((b) => {
+    const go = (e) => {
+      if (e) e.preventDefault();
+      const up = lastUp; whenReady(() => strum(b.dataset.chord, null, up, 0.55)); lastUp = !lastUp;
+      b.classList.add('hit'); setTimeout(() => b.classList.remove('hit'), 100); vibe();
+    };
+    b.addEventListener('pointerdown', go);
+    b.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') go(e); });
+  });
+
+  // --- Activar sonido ---
+  document.getElementById('unlock').addEventListener('click', () => {
+    const c = unlock();
+    c.resume().then(() => { if (!c.onstatechange) c.onstatechange = showState; showState(); strum('C', null, false, 0.55); vibe(); }).catch(showState);
+  });
+  ['pointerup', 'touchend', 'click', 'keydown'].forEach((ev) => document.addEventListener(ev, () => {
+    if (!ctx || ctx.state !== 'running') { const c = unlock(); c.resume().then(() => { c.onstatechange = showState; showState(); }).catch(() => {}); }
+  }, { passive: true }));
+
+  // --- Datos ---
+  const FACTS = [
+    'El son jarocho se toca con jarana, requinto y arpa, y se acompaña con zapateado sobre la tarima.',
+    'El fandango es una reunión musical y comunitaria con canto, improvisación y zapateado.',
+    'La Bamba es un son jarocho tradicional: en el fandango se le van inventando versos nuevos.',
+    'Además del son jarocho, en Veracruz suenan el son huasteco, las bandas tradicionales y las danzas indígenas.',
+    'La ceremonia de los Voladores, asociada al pueblo totonaco, une música, danza y simbolismo.',
+    'En Veracruz viven 16 pueblos indígenas en 2,484 localidades de 109 municipios.',
+    'En la Huasteca se prepara el zacahuil, y la vainilla está ligada históricamente a la región totonaca.',
+    'En Tlacotalpan, las Fiestas de La Candelaria incluyen procesiones y música tradicional junto al río.'
+  ];
+  let fi = 0;
+  $('next-fact').addEventListener('click', () => { fi = (fi + 1) % FACTS.length; $('fact-text').textContent = FACTS[fi]; });
+})();
+</script>
+</body>
+</html>
