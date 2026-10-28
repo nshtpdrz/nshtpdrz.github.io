@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veracruz cobra vida</title>
+<meta name="theme-color" content="#12405A">
+<meta name="description" content="Realidad aumentada, expedición interactiva, trivia y fandango virtual sobre Veracruz.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@700&display=swap">
+<style>
+:root { --paper:#FFF8EC; --ink:#1E2433; --sea:#12405A; --red:#C0272D; --yellow:#F2B632; --display:'Bricolage Grotesque','Trebuchet MS',sans-serif; --body:'Atkinson Hyperlegible','Segoe UI',sans-serif; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.45; }
+.wrap { max-width: 560px; margin: 0 auto; padding: calc(20px + env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) calc(30px + env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); display: flex; flex-direction: column; gap: 16px; }
+.picado { display: flex; gap: 6px; justify-content: center; overflow: hidden; }
+.picado i { width: 46px; height: 40px; flex-shrink: 0; clip-path: polygon(0 0,100% 0,100% 80%,87% 100%,75% 80%,62% 100%,50% 80%,37% 100%,25% 80%,12% 100%,0 80%); }
+.picado i:nth-child(5n+1){background:#C0272D}.picado i:nth-child(5n+2){background:#F2B632}.picado i:nth-child(5n+3){background:#1B8DB3}.picado i:nth-child(5n+4){background:#E36A9A}.picado i:nth-child(5n+5){background:#3E9A5C}
+h1 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(44px, 13vw, 68px); line-height: .92; }
+h1 span { color: var(--red); }
+.lead { margin: 0; font-size: 18px; }
+.opt { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; text-decoration: none; color: var(--ink); background: #fff; border: 3px solid var(--ink); border-radius: 20px; padding: 14px 16px; min-height: 96px; }
+.opt:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.opt .ic { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+.opt .ic svg { width: 36px; height: 36px; }
+.opt strong { display: block; font-family: var(--display); font-weight: 800; font-size: 22px; line-height: 1.1; }
+.opt span { font-size: 15px; color: #4E5566; }
+.hand { font-family: 'Caveat', cursive; font-size: 24px; color: var(--sea); text-align: center; margin: 0; }
+footer { font-size: 13px; color: #4E5566; text-align: center; }
+</style>
+</head>
+<body>
+<div class="picado" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<main class="wrap">
+  <h1>Veracruz <span>cobra vida</span></h1>
+  <p class="lead">Elige cómo quieres conocer el estado.</p>
+  <a class="opt" href="ar/">
+    <span class="ic" style="background:#C0272D"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M12 7l4 2.5v5L12 17l-4-2.5v-5z"/></svg></span>
+    <div><strong>Realidad aumentada</strong><span>Apunta la cámara al póster y verás aparecer a los Voladores, el Pico de Orizaba, barcos y tortugas.</span></div>
+  </a>
+  <a class="opt" href="expedicion/">
+    <span class="ic" style="background:#12405A"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+    <div><strong>Expedición Veracruz</strong><span>Recorre las 8 regiones con su gente, economía, naturaleza y retos, y termina con una trivia.</span></div>
+  </a>
+  <a class="opt" href="../fandango/">
+    <span class="ic" style="background:#F2B632"><svg viewBox="0 0 24 24" fill="none" stroke="#1E2433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
+    <div><strong>Fandango virtual</strong><span>Zapatea en la tarima y toca La Bamba con la jarana.</span></div>
+  </a>
+  <p class="hand">Sube el volumen y busca buena luz</p>
+  <footer>Daniel Ignacio Pedraza Martínez · TecNM, Instituto Tecnológico de Pachuca</footer>
+</main>
+</body>
+</html>

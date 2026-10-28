@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veracruz cobra vida · Realidad aumentada</title>
+<meta name="theme-color" content="#12405A">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root { --ink:#1E2433; --paper:#FFF8EC; --sea:#12405A; --red:#C0272D; --yellow:#F2B632; --display:'Bricolage Grotesque','Trebuchet MS',sans-serif; --body:'Atkinson Hyperlegible','Segoe UI',sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-family: var(--body); overflow: hidden; }
+#ar { position: fixed; inset: 0; }
+#ar video { object-fit: cover; }
+.screen { position: fixed; inset: 0; z-index: 30; background: var(--paper); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px max(20px, env(safe-area-inset-left)); text-align: center; overflow-y: auto; }
+.screen h1 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(34px, 10vw, 54px); line-height: .95; }
+.screen h1 span { color: var(--red); }
+.screen p { margin: 0; max-width: 34ch; font-size: 17px; line-height: 1.45; }
+.btn { font: inherit; font-weight: 700; font-size: 18px; border: 0; border-radius: 14px; min-height: 56px; padding: 0 24px; cursor: pointer; background: var(--red); color: #fff; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn.alt { background: #fff; color: var(--ink); border: 2px solid var(--ink); }
+.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.tips { display: grid; gap: 8px; max-width: 360px; text-align: left; font-size: 15px; }
+.tips div { display: flex; gap: 10px; align-items: flex-start; }
+.tips b { flex-shrink: 0; width: 26px; height: 26px; border-radius: 13px; background: var(--sea); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: var(--display); }
+#hud { position: fixed; left: 0; right: 0; top: 0; z-index: 10; padding: calc(10px + env(safe-area-inset-top)) 14px 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; pointer-events: none; }
+#hud .tag { pointer-events: auto; background: rgba(18,64,90,.9); color: #fff; border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px; }
+#hud a { pointer-events: auto; background: #fff; color: var(--ink); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px; text-decoration: none; }
+#scan { position: fixed; inset: 0; z-index: 9; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+#scan .frame { width: min(70vw, 360px); aspect-ratio: 1056 / 1632; border: 3px dashed rgba(255,255,255,.85); border-radius: 18px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; }
+#scan .frame span { background: rgba(0,0,0,.6); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 15px; }
+#sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--paper); border-radius: 22px 22px 0 0; padding: 16px max(18px, env(safe-area-inset-left)) calc(18px + env(safe-area-inset-bottom)); max-height: 62vh; overflow-y: auto; transform: translateY(105%); transition: transform .3s ease; box-shadow: 0 -8px 30px rgba(0,0,0,.3); }
+#sheet.open { transform: none; }
+#sheet .top { display: flex; align-items: center; gap: 12px; }
+#sheet .num { width: 44px; height: 44px; border-radius: 22px; color: #fff; font-family: var(--display); font-weight: 800; font-size: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+#sheet h2 { margin: 0; font-family: var(--display); font-weight: 800; font-size: 26px; line-height: 1; }
+#sheet .lug { font-size: 13px; font-weight: 700; color: #4E5566; margin-top: 3px; }
+#sheet .frase { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 12px 0 8px; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 10px; }
+.tabs button { font: inherit; font-weight: 700; font-size: 14px; border: 2px solid var(--ink); background: #fff; border-radius: 999px; min-height: 40px; padding: 0 14px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+#sheet .txt { font-size: 16px; line-height: 1.45; margin: 0; }
+#sheet .meta { margin-top: 10px; font-size: 13px; color: #4E5566; }
+#sheet .close { position: absolute; right: 14px; top: 12px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #EDE3D0; font-size: 22px; cursor: pointer; }
+#hint { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 11; background: rgba(0,0,0,.7); color: #fff; padding: 10px 14px; border-radius: 12px; font-size: 15px; text-align: center; width: max-content; max-width: 90vw; }
+/* Modo sin cámara */
+#flat { position: fixed; inset: 0; z-index: 15; background: var(--paper); overflow-y: auto; padding: calc(60px + env(safe-area-inset-top)) 12px 30px; }
+#flat .wrap { position: relative; width: min(100%, 560px); margin: 0 auto; }
+#flat img { width: 100%; display: block; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+#flat .pin { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 22px; border: 3px solid #fff; color: #fff; font-family: var(--display); font-weight: 800; font-size: 18px; cursor: pointer; box-shadow: 0 0 0 0 rgba(192,39,45,.6); animation: pulse 1.8s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.8); } 100% { box-shadow: 0 0 0 16px rgba(255,255,255,0); } }
+@media (prefers-reduced-motion: reduce) { #flat .pin { animation: none; } #sheet { transition: none; } }
+[hidden] { display: none !important; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+  "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+} }
+</script>
+<script src="../data.js"></script>
+</head>
+<body>
+
+<div class="screen" id="start">
+  <h1>Veracruz <span>cobra vida</span></h1>
+  <p>Apunta la cámara al póster y verás aparecer a los Voladores, el Pico de Orizaba, un barco, tortugas y más. Toca los números para conocer cada región.</p>
+  <div class="tips">
+    <div><b>1</b><span>Pon el póster completo dentro del recuadro, a unos 60–80 cm.</span></div>
+    <div><b>2</b><span>Busca buena luz y evita reflejos sobre el papel.</span></div>
+    <div><b>3</b><span>Toca un número flotante para abrir su ficha.</span></div>
+  </div>
+  <button class="btn" id="go" type="button">Encender cámara</button>
+  <button class="btn alt" id="noCam" type="button">Ver sin cámara</button>
+  <a href="../" style="color: var(--ink); font-weight: 700">Volver al inicio</a>
+</div>
+
+<div id="ar" hidden></div>
+<div id="hud" hidden><span class="tag" id="status">Buscando el póster…</span><a href="#" id="toFlat">Sin cámara</a></div>
+<div id="scan" hidden><div class="frame"><span>Encuadra el póster aquí</span></div></div>
+<div id="hint" hidden>Toca un número para ver su región</div>
+
+<div id="flat" hidden><div class="wrap"><img src="poster.png" alt="Póster Veracruz, un viaje de norte a sur"></div></div>
+
+<section id="sheet" aria-live="polite" aria-label="Ficha de la región">
+  <button class="close" id="close" type="button" aria-label="Cerrar ficha">×</button>
+  <div class="top"><div class="num" id="sNum">1</div><div><h2 id="sName"></h2><div class="lug" id="sLug"></div></div></div>
+  <p class="frase" id="sFrase"></p>
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" data-k="cultura" aria-selected="true">Cultura</button>
+    <button type="button" role="tab" data-k="naturaleza" aria-selected="false">Naturaleza</button>
+    <button type="button" role="tab" data-k="economia" aria-selected="false">Economía</button>
+    <button type="button" role="tab" data-k="reto" aria-selected="false">Reto ambiental</button>
+  </div>
+  <p class="txt" id="sTxt"></p>
+  <p class="meta" id="sMeta"></p>
+</section>
+
+<script type="module">
+const R = window.VERACRUZ.regiones;
+const $ = (id) => document.getElementById(id);
+let current = null, tab = 'cultura';
+
+// ---------- Ficha ----------
+function openRegion(r) {
+  current = r; tab = 'cultura';
+  $('sNum').textContent = r.n; $('sNum').style.background = r.color;
+  $('sName').textContent = r.nombre; $('sLug').textContent = r.lugares;
+  $('sFrase').textContent = r.frase;
+  $('sMeta').textContent = `Región ${r.n} de 8 · ${r.municipios} municipios`;
+  renderTab(); $('sheet').classList.add('open'); $('hint').hidden = true;
+}
+function renderTab() {
+  document.querySelectorAll('.tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.k === tab)));
+  $('sTxt').textContent = current[tab];
+}
+document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => { tab = b.dataset.k; renderTab(); }));
+$('close').addEventListener('click', () => $('sheet').classList.remove('open'));
+
+// ---------- Modo sin cámara ----------
+function showFlat() {
+  $('flat').hidden = false; $('start').hidden = true; $('hud').hidden = false; $('scan').hidden = true;
+  $('status').textContent = 'Modo sin cámara'; $('toFlat').hidden = true;
+  const wrap = document.querySelector('#flat .wrap');
+  if (!wrap.querySelector('.pin')) R.forEach((r) => {
+    const b = document.createElement('button');
+    b.className = 'pin'; b.type = 'button'; b.textContent = r.n; b.style.background = r.color;
+    b.style.left = (r.px / 1056 * 100) + '%'; b.style.top = (r.py / 1632 * 100) + '%';
+    b.setAttribute('aria-label', `Región ${r.n}: ${r.nombre}`);
+    b.addEventListener('click', () => openRegion(r));
+    wrap.appendChild(b);
+  });
+  if (window.__stopAR) window.__stopAR();
+}
+$('noCam').addEventListener('click', showFlat);
+$('toFlat').addEventListener('click', (e) => { e.preventDefault(); showFlat(); });
+
+// ---------- Realidad aumentada ----------
+$('go').addEventListener('click', async () => {
+  $('go').disabled = true; $('go').textContent = 'Cargando…';
+  try {
+    const THREE = await import('three');
+    const { MindARThree } = await import('mindar-image-three');
+    $('start').hidden = true; $('ar').hidden = false; $('hud').hidden = false; $('scan').hidden = false;
+
+    const mindar = new MindARThree({ container: $('ar'), imageTargetSrc: './poster.mind', uiScanning: 'no', uiLoading: 'no', filterMinCF: 0.0001, filterBeta: 0.001 });
+    const { renderer, scene, camera } = mindar;
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x445566, 1.4));
+    const sun = new THREE.DirectionalLight(0xffffff, 1.2); sun.position.set(0.5, 1, 2); scene.add(sun);
+
+    const anchor = mindar.addAnchor(0);
+    const G = anchor.group;
+    // coordenadas del póster (px) -> espacio del objetivo (ancho = 1, centro = 0)
+    const P = (px, py, z = 0) => new THREE.Vector3(px / 1056 - 0.5, (816 - py) / 1056, z);
+    const M = (c, o = {}) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.7, ...o });
+
+    // --- Pines numerados (tocables) ---
+    const pins = [];
+    function numberTexture(n, color) {
+      const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+      x.fillStyle = color; x.beginPath(); x.arc(64, 64, 58, 0, Math.PI * 2); x.fill();
+      x.lineWidth = 8; x.strokeStyle = '#fff'; x.stroke();
+      x.fillStyle = '#fff'; x.font = 'bold 70px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(n), 64, 68);
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+    }
+    R.forEach((r) => {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: numberTexture(r.n, r.color), depthTest: false }));
+      s.scale.set(0.06, 0.06, 1); s.position.copy(P(r.px, r.py, 0.05)); s.userData.region = r; s.renderOrder = 10;
+      const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.002, 0.002, 0.05, 6), M(0xffffff));
+      stick.rotation.x = Math.PI / 2; stick.position.copy(P(r.px, r.py, 0.025));
+      G.add(s, stick); pins.push(s);
+    });
+
+    // --- Voladores en El Tajín ---
+    const vol = new THREE.Group(); vol.position.copy(P(452, 498));
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.003, 0.004, 0.16, 8), M(0x5B3A22));
+    pole.rotation.x = Math.PI / 2; pole.position.z = 0.08; vol.add(pole);
+    const top = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.004, 16), M(0x8A5A2B)); top.rotation.x = Math.PI / 2; top.position.z = 0.16; vol.add(top);
+    const caporal = new THREE.Mesh(new THREE.SphereGeometry(0.006, 10, 10), M(0xC0272D)); caporal.position.z = 0.168; vol.add(caporal);
+    const flyers = new THREE.Group(); flyers.position.z = 0.16; vol.add(flyers);
+    const colors = [0xC0272D, 0xF2B632, 0x1B8DB3, 0x3E9A5C];
+    const flyerParts = [];
+    for (let i = 0; i < 4; i++) {
+      const arm = new THREE.Group(); arm.rotation.z = i * Math.PI / 2; flyers.add(arm);
+      const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.004, 0.012, 4, 8), M(colors[i])); arm.add(body);
+      const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.0006, 0.0006, 1, 4), M(0xffffff));
+      arm.add(rope); flyerParts.push({ body, rope });
+    }
+    G.add(vol);
+
+    // --- Pico de Orizaba ---
+    const pico = new THREE.Group(); pico.position.copy(P(400, 728));
+    const cone = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.09, 24), M(0x6F8796, { flatShading: true }));
+    cone.rotation.x = Math.PI / 2; cone.position.z = 0.045; pico.add(cone);
+    const snow = new THREE.Mesh(new THREE.ConeGeometry(0.0195, 0.035, 24), M(0xffffff, { flatShading: true }));
+    snow.rotation.x = Math.PI / 2; snow.position.z = 0.0725; pico.add(snow);
+    G.add(pico);
+
+    // --- Barco en el puerto ---
+    const boat = new THREE.Group();
+    const hull = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.016, 0.01), M(0x1E2433)); hull.position.z = 0.005; boat.add(hull);
+    const sail = new THREE.Mesh(new THREE.ConeGeometry(0.012, 0.035, 3), M(0xFFF8EC)); sail.rotation.x = Math.PI / 2; sail.position.z = 0.028; boat.add(sail);
+    G.add(boat);
+
+    // --- Tortugas rumbo al mar ---
+    const turtles = [];
+    for (let i = 0; i < 3; i++) {
+      const t = new THREE.Group();
+      const shell = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 8), M(0x3E9A5C)); shell.scale.set(1.3, 1, 0.45); t.add(shell);
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.0035, 8, 8), M(0x2E6B3E)); head.position.x = 0.013; t.add(head);
+      t.position.z = 0.004; G.add(t); turtles.push({ t, offset: i / 3 });
+    }
+
+    // --- Agua caliente de Laguna Verde ---
+    const plume = new THREE.Mesh(new THREE.CircleGeometry(0.04, 40), new THREE.MeshBasicMaterial({ color: 0xFF6A3D, transparent: true, opacity: 0.45 }));
+    plume.position.copy(P(588, 585, 0.002)); G.add(plume);
+
+    // --- Humo de la refinería ---
+    const smoke = [];
+    for (let i = 0; i < 10; i++) {
+      const s = new THREE.Mesh(new THREE.SphereGeometry(0.008, 10, 10), new THREE.MeshStandardMaterial({ color: 0x9AA0A6, transparent: true, opacity: 0.6 }));
+      G.add(s); smoke.push({ s, offset: i / 10 });
+    }
+
+    // --- Seguimiento ---
+    let found = false;
+    anchor.onTargetFound = () => { found = true; $('status').textContent = 'Póster encontrado'; $('scan').hidden = true; if (!$('sheet').classList.contains('open')) $('hint').hidden = false; };
+    anchor.onTargetLost = () => { found = false; $('status').textContent = 'Buscando el póster…'; $('scan').hidden = false; $('hint').hidden = true; };
+
+    // --- Toques ---
+    const ray = new THREE.Raycaster(), v2 = new THREE.Vector2();
+    renderer.domElement.addEventListener('pointerup', (e) => {
+      if (!found) return;
+      const rect = renderer.domElement.getBoundingClientRect();
+      v2.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
+      ray.setFromCamera(v2, camera);
+      const hit = ray.intersectObjects(pins)[0];
+      if (hit) openRegion(hit.object.userData.region);
+    });
+
+    // --- Animación ---
+    const clock = new THREE.Clock();
+    const A = P(640, 735), B = P(760, 700);
+    const T0 = P(540, 470), T1 = P(615, 450);
+    const RF = P(984, 1092, 0.03);
+    renderer.setAnimationLoop(() => {
+      const t = clock.getElapsedTime();
+      // voladores: giran y bajan en espiral durante 13 vueltas
+      const cycle = (t % 26) / 26; // 26 s por descenso
+      flyers.rotation.z = cycle * 13 * Math.PI * 2;
+      const len = 0.01 + cycle * 0.13; const rad = 0.012 + cycle * 0.03;
+      flyerParts.forEach(({ body, rope }) => {
+        body.position.set(rad, 0, -len); body.rotation.set(0, Math.PI / 2, 0);
+        rope.scale.y = len; rope.rotation.x = Math.PI / 2; rope.position.set(rad / 2, 0, -len / 2);
+      });
+      // barco de ida y vuelta
+      const k = (Math.sin(t * 0.4) + 1) / 2; boat.position.lerpVectors(A, B, k); boat.rotation.z = Math.atan2(B.y - A.y, B.x - A.x) + (Math.cos(t * 0.4) < 0 ? Math.PI : 0);
+      boat.position.z = 0.002 + Math.sin(t * 2) * 0.002;
+      // tortugas de la playa al mar
+      turtles.forEach(({ t: tt, offset }) => { const q = ((t * 0.12) + offset) % 1; tt.position.lerpVectors(T0, T1, q); tt.position.z = 0.004; tt.rotation.z = Math.atan2(T1.y - T0.y, T1.x - T0.x); tt.visible = q < 0.95; });
+      // pluma caliente que late
+      const pulse = 1 + 0.25 * Math.sin(t * 2); plume.scale.set(pulse, pulse, 1); plume.material.opacity = 0.3 + 0.2 * (1 + Math.sin(t * 2)) / 2;
+      // humo
+      smoke.forEach(({ s, offset }) => { const q = ((t * 0.25) + offset) % 1; s.position.set(RF.x + q * 0.03, RF.y + q * 0.02, RF.z + q * 0.12); s.scale.setScalar(0.6 + q * 1.6); s.material.opacity = 0.6 * (1 - q); });
+      // pines flotan
+      pins.forEach((p, i) => { p.position.z = 0.05 + Math.sin(t * 2 + i) * 0.006; });
+      renderer.render(scene, camera);
+    });
+
+    await mindar.start();
+    window.__stopAR = () => { try { renderer.setAnimationLoop(null); mindar.stop(); } catch (e) {} $('ar').hidden = true; };
+  } catch (err) {
+    console.error(err);
+    $('start').hidden = false; $('go').disabled = false; $('go').textContent = 'Reintentar cámara';
+    const p = document.querySelector('#start p');
+    p.textContent = 'No se pudo usar la cámara. Revisa que diste permiso o usa «Ver sin cámara». (' + (err && err.message ? err.message : err) + ')';
+  }
+});
+</script>
+</body>
+</html>

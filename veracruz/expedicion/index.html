@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expedición Veracruz</title>
+<meta name="theme-color" content="#12405A">
+<meta name="description" content="Recorre Veracruz de norte a sur: regiones, población, economía, naturaleza, clima, contaminación y una trivia final.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@700&display=swap">
+<style>
+/* Layout: una sola columna tipo bitácora de viaje; la ruta (línea punteada) baja por la izquierda y une las 8 paradas; después, capítulos de datos y la trivia. */
+:root { --paper:#FFF8EC; --card:#FFFFFF; --ink:#1E2433; --muted:#4E5566; --sea:#12405A; --sea2:#CDEBF3; --red:#C0272D; --yellow:#F2B632; --green:#2E6B3E; --line:#E6DCC8;
+  --display:'Bricolage Grotesque','Trebuchet MS',sans-serif; --body:'Atkinson Hyperlegible','Segoe UI',sans-serif; --hand:'Caveat','Comic Sans MS',cursive; color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 1.05; margin: 0; text-wrap: balance; }
+a { color: var(--sea); }
+/* portada */
+.hero { background: var(--sea); color: #fff; padding: calc(28px + env(safe-area-inset-top)) 0 34px; position: relative; overflow: hidden; }
+.picado { display: flex; gap: 6px; justify-content: center; margin-bottom: 18px; }
+.picado i { width: 46px; height: 40px; flex-shrink: 0; clip-path: polygon(0 0,100% 0,100% 80%,87% 100%,75% 80%,62% 100%,50% 80%,37% 100%,25% 80%,12% 100%,0 80%); }
+.picado i:nth-child(5n+1){background:#C0272D}.picado i:nth-child(5n+2){background:#F2B632}.picado i:nth-child(5n+3){background:#7FC4DC}.picado i:nth-child(5n+4){background:#E36A9A}.picado i:nth-child(5n+5){background:#5BB874}
+.eyebrow { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .16em; color: var(--yellow); }
+.hero h1 { font-size: clamp(46px, 13vw, 84px); margin-top: 6px; }
+.hero p { font-size: 18px; max-width: 52ch; color: #DDEBF2; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chips a { background: rgba(255,255,255,.12); color: #fff; text-decoration: none; padding: 8px 14px; border-radius: 999px; font-weight: 700; font-size: 15px; min-height: 40px; display: inline-flex; align-items: center; }
+.chips a.main { background: var(--yellow); color: var(--ink); }
+/* ruta */
+.route { position: relative; padding: 30px 0 10px 44px; }
+.route::before { content: ""; position: absolute; left: 17px; top: 40px; bottom: 30px; border-left: 3px dotted var(--ink); }
+.stop { position: relative; margin-bottom: 26px; }
+.stop .pin { position: absolute; left: -44px; top: 6px; width: 38px; height: 38px; border-radius: 19px; color: #fff; font-family: var(--display); font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--paper); }
+.card { background: var(--card); border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; }
+.card .band { height: 10px; }
+.card .in { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.stop h2 { font-size: 26px; }
+.lug { font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+.frase { font-family: var(--hand); font-size: 24px; line-height: 1.1; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fact { background: var(--paper); border-radius: 12px; padding: 10px 12px; font-size: 15px; line-height: 1.4; min-width: 0; }
+.fact b { display: block; font-size: 12px; letter-spacing: .1em; margin-bottom: 2px; }
+.fact.r { background: #FDEAE5; }
+.stat { font-size: 14px; color: var(--muted); }
+@media (max-width: 520px) { .facts { grid-template-columns: minmax(0, 1fr); } }
+/* capítulos */
+.chapter { padding: 30px 0 6px; }
+.chapter > h2 { font-size: 32px; margin-bottom: 6px; }
+.chapter > p.lead { margin: 0 0 14px; color: var(--muted); }
+.kicker { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .16em; color: var(--red); }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.big { background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px; min-width: 0; }
+.big strong { display: block; font-family: var(--display); font-weight: 800; font-size: 30px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.big span { font-size: 14px; color: var(--muted); }
+@media (max-width: 560px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bars { display: flex; flex-direction: column; gap: 8px; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 14px; margin-top: 10px; }
+.bars h3 { font-size: 18px; }
+.bar { display: grid; grid-template-columns: 150px minmax(0, 1fr) 56px; gap: 8px; align-items: center; font-size: 14px; }
+.bar .tr { height: 16px; background: #EFE6D4; border-radius: 8px; overflow: hidden; }
+.bar .tr i { display: block; height: 100%; border-radius: 8px; width: var(--w); transition: width 1s ease; }
+.bar b { text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 480px) { .bar { grid-template-columns: 110px minmax(0, 1fr) 48px; font-size: 13px; } }
+.split { display: flex; height: 30px; border-radius: 10px; overflow: hidden; font-size: 13px; font-weight: 700; color: #fff; }
+.split div { display: flex; align-items: center; justify-content: center; }
+.note { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+.cal { overflow-x: auto; }
+.cal table { border-collapse: separate; border-spacing: 3px; font-size: 13px; min-width: 520px; }
+.cal td, .cal th { padding: 0; }
+.cal th { font-weight: 700; color: var(--muted); width: 32px; }
+.cal td.l { padding-right: 8px; font-weight: 700; white-space: nowrap; }
+.cal td.on { height: 18px; border-radius: 4px; }
+.cal td.off { height: 18px; border-radius: 4px; background: #EFE6D4; }
+.esferas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.esf { border-radius: 16px; padding: 12px 14px; min-width: 0; }
+.esf h3 { font-size: 20px; margin-bottom: 4px; }
+.esf p { margin: 0; font-size: 15px; }
+.cont { display: grid; gap: 10px; }
+.cont .row { background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; }
+.cont .row h3 { font-size: 18px; }
+.cont .row p { margin: 0; font-size: 15px; }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--yellow); margin-bottom: 4px; }
+@media (max-width: 520px) { .cont .row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+/* trivia */
+.quiz { background: var(--sea); color: #fff; border-radius: 22px; padding: 20px 18px; margin: 10px 0 30px; }
+.quiz h2 { font-size: 32px; }
+.q { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.2; margin: 14px 0 12px; }
+.opts { display: grid; gap: 8px; }
+.opts button { font: inherit; text-align: left; border: 2px solid rgba(255,255,255,.4); background: rgba(255,255,255,.08); color: #fff; border-radius: 14px; padding: 12px 14px; min-height: 52px; cursor: pointer; }
+.opts button:hover { background: rgba(255,255,255,.16); }
+.opts button.ok { background: #2E8B57; border-color: #2E8B57; }
+.opts button.no { background: #B33A3A; border-color: #B33A3A; }
+.opts button:disabled { cursor: default; }
+.why { margin: 12px 0 0; color: #DDEBF2; min-height: 1.5em; }
+.qbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; }
+.qbtn { font: inherit; font-weight: 700; border: 0; border-radius: 14px; min-height: 50px; padding: 0 20px; background: var(--yellow); color: var(--ink); cursor: pointer; }
+.qbtn:focus-visible, .opts button:focus-visible, .chips a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.prog { font-size: 14px; color: #DDEBF2; }
+.final { text-align: center; padding: 10px 0; }
+.final strong { display: block; font-family: var(--display); font-size: 64px; line-height: 1; color: var(--yellow); }
+footer { border-top: 2px solid var(--line); padding: 18px 0 calc(30px + env(safe-area-inset-bottom)); font-size: 14px; color: var(--muted); }
+/* aparición suave (contenido visible sin JS) */
+.reveal { transition: opacity .6s ease, transform .6s ease; }
+@media (prefers-reduced-motion: reduce) { .reveal, .bar .tr i { transition: none; } .js .reveal.pre { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+</style>
+<script src="../data.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="picado" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <span class="eyebrow">VERACRUZ DE IGNACIO DE LA LLAVE</span>
+    <h1>Expedición Veracruz</h1>
+    <p>Un viaje de la Huasteca a la tierra olmeca: 8 regiones, su gente, su naturaleza, su economía y sus retos. Al final, pon a prueba lo que aprendiste.</p>
+    <nav class="chips" aria-label="Secciones">
+      <a class="main" href="#ruta">Empezar el viaje</a>
+      <a href="#gente">Su gente</a>
+      <a href="#economia">Economía</a>
+      <a href="#naturaleza">Naturaleza</a>
+      <a href="#contaminacion">Contaminación</a>
+      <a href="#trivia">Trivia</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="chapter" style="padding-top: 24px">
+    <div class="grid3">
+      <div class="big"><strong>8,062,579</strong><span>habitantes (2020); 4.ª entidad más poblada</span></div>
+      <div class="big"><strong>212</strong><span>municipios en 10 regiones</span></div>
+      <div class="big"><strong>~800 km</strong><span>de costa en el Golfo de México</span></div>
+      <div class="big"><strong>5,636 m</strong><span>Pico de Orizaba, la cumbre más alta del país</span></div>
+      <div class="big"><strong>719</strong><span>especies de aves, ~65 % de las de México</span></div>
+      <div class="big"><strong>16</strong><span>pueblos indígenas en 109 municipios</span></div>
+    </div>
+  </section>
+
+  <section id="ruta" class="route" aria-label="Las 8 paradas del viaje"></section>
+
+  <!-- GENTE -->
+  <section id="gente" class="chapter reveal">
+    <span class="kicker">CAPÍTULO 1</span>
+    <h2>Su gente</h2>
+    <p class="lead">Hay más mujeres que hombres, la población envejece y nacen menos niños que antes.</p>
+    <div class="bars">
+      <h3>Mujeres y hombres (Censo 2020)</h3>
+      <div class="split" role="img" aria-label="52 por ciento mujeres, 48 por ciento hombres"><div style="width:52%; background:#C0272D">Mujeres 52 %</div><div style="width:48%; background:#1B6F8F">Hombres 48 %</div></div>
+      <p class="note">4,190,805 mujeres y 3,871,774 hombres: 92 hombres por cada 100 mujeres.</p>
+    </div>
+    <div class="grid3" style="margin-top: 10px">
+      <div class="big"><strong>23 → 31</strong><span>años de edad mediana (2000 → 2020)</span></div>
+      <div class="big"><strong>2.6 → 2.0</strong><span>hijos por mujer (2000 → 2025)</span></div>
+      <div class="big"><strong>61.7 %</strong><span>vive en ciudades; 38.3 % en localidades rurales</span></div>
+    </div>
+    <div class="bars">
+      <h3>Sabe leer y escribir (15 años y más)</h3>
+      <div class="bar"><span>2000</span><div class="tr"><i style="--w:85.1%; background:#9BB8C8"></i></div><b>85.1 %</b></div>
+      <div class="bar"><span>2010</span><div class="tr"><i style="--w:88.6%; background:#5E93AE"></i></div><b>88.6 %</b></div>
+      <div class="bar"><span>2020</span><div class="tr"><i style="--w:91.5%; background:#12405A"></i></div><b>91.5 %</b></div>
+      <p class="note">La escolaridad promedio subió de 6.4 a 8.7 años, pero sigue debajo del promedio nacional (9.7).</p>
+    </div>
+    <div class="bars">
+      <h3>¿Por qué se mueve la gente? (Censo 2020)</h3>
+      <div class="bar"><span>Reunirse con la familia</span><div class="tr"><i style="--w:44.4%; background:#C0272D"></i></div><b>44.4 %</b></div>
+      <div class="bar"><span>Oferta de trabajo</span><div class="tr"><i style="--w:12.6%; background:#9AA3A8"></i></div><b>12.6 %</b></div>
+      <div class="bar"><span>Buscar trabajo</span><div class="tr"><i style="--w:10.8%; background:#9AA3A8"></i></div><b>10.8 %</b></div>
+      <div class="bar"><span>Casarse o unirse</span><div class="tr"><i style="--w:10.4%; background:#9AA3A8"></i></div><b>10.4 %</b></div>
+      <div class="bar"><span>Estudiar</span><div class="tr"><i style="--w:7.1%; background:#9AA3A8"></i></div><b>7.1 %</b></div>
+      <div class="bar"><span>Inseguridad</span><div class="tr"><i style="--w:3.2%; background:#9AA3A8"></i></div><b>3.2 %</b></div>
+      <p class="note">Veracruz es expulsor: su saldo migratorio fue de −1.3 % (2025). Muchos se van a Nuevo León, Tamaulipas, Querétaro y Quintana Roo, y en el primer semestre de 2026 llegaron 1,287.8 millones de dólares en remesas.</p>
+    </div>
+  </section>
+
+  <!-- ECONOMÍA -->
+  <section id="economia" class="chapter reveal">
+    <span class="kicker">CAPÍTULO 2</span>
+    <h2>De qué vive Veracruz</h2>
+    <p class="lead">Seis de cada diez pesos vienen de los servicios. El PIB estatal fue de 1.44 billones de pesos en 2024.</p>
+    <div class="bars">
+      <h3>PIB por sector (2024)</h3>
+      <div class="bar"><span>Servicios</span><div class="tr"><i style="--w:60.3%; background:#C0272D"></i></div><b>60.3 %</b></div>
+      <div class="bar"><span>Industria</span><div class="tr"><i style="--w:27.7%; background:#9AA3A8"></i></div><b>27.7 %</b></div>
+      <div class="bar"><span>Campo y pesca</span><div class="tr"><i style="--w:6.6%; background:#9AA3A8"></i></div><b>6.6 %</b></div>
+      <p class="note">El 5.4 % restante son impuestos. Exporta tubos de acero, cítricos y azúcar, sobre todo a Estados Unidos; el 68.1 % del empleo es informal (2023).</p>
+    </div>
+  </section>
+
+  <!-- NATURALEZA -->
+  <section id="naturaleza" class="chapter reveal">
+    <span class="kicker">CAPÍTULO 3</span>
+    <h2>Las cuatro esferas de Veracruz</h2>
+    <p class="lead">Un estado donde la roca, el agua, el aire y la vida se ven en pocos kilómetros, de la cumbre al arrecife.</p>
+    <div class="esferas">
+      <div class="esf" style="background:#EFE3D3"><h3>Litosfera</h3><p>Suelos volcánicos fértiles y el Pico de Orizaba, de 5,636 m.</p></div>
+      <div class="esf" style="background:#CDEBF3"><h3>Hidrosfera</h3><p>Ríos Pánuco, Papaloapan y Coatzacoalcos, lagunas y ~800 km de costa.</p></div>
+      <div class="esf" style="background:#E7EEF5"><h3>Atmósfera</h3><p>Nortes, ciclones (69 en 70 años) y lluvia que la sierra arranca a las nubes del Golfo.</p></div>
+      <div class="esf" style="background:#DCEFD9"><h3>Biosfera</h3><p>Al menos 19 tipos de vegetación, jaguares, tapires y la Reserva Los Tuxtlas.</p></div>
+    </div>
+    <div class="bars">
+      <h3>Calendario del clima</h3>
+      <div class="cal"><table aria-label="Meses de cada fenómeno climático">
+        <tr><td></td><th>E</th><th>F</th><th>M</th><th>A</th><th>M</th><th>J</th><th>J</th><th>A</th><th>S</th><th>O</th><th>N</th><th>D</th></tr>
+        <tr><td class="l">Ciclones</td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="on" style="background:#1B6F8F"></td><td class="on" style="background:#1B6F8F"></td><td class="on" style="background:#1B6F8F"></td><td class="on" style="background:#1B6F8F"></td><td class="on" style="background:#1B6F8F"></td><td class="on" style="background:#1B6F8F"></td><td class="off"></td></tr>
+        <tr><td class="l">Nortes</td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td><td class="on" style="background:#5E93AE"></td></tr>
+        <tr><td class="l">Estiaje</td><td class="off"></td><td class="on" style="background:#E0A21B"></td><td class="on" style="background:#E0A21B"></td><td class="on" style="background:#E0A21B"></td><td class="on" style="background:#E0A21B"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td></tr>
+        <tr><td class="l">Incendios</td><td class="on" style="background:#C0272D"></td><td class="on" style="background:#C0272D"></td><td class="on" style="background:#C0272D"></td><td class="on" style="background:#C0272D"></td><td class="on" style="background:#C0272D"></td><td class="on" style="background:#C0272D"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td><td class="off"></td></tr>
+      </table></div>
+      <p class="note">Temperatura media de 23 °C y unos 1,500 mm de lluvia al año.</p>
+    </div>
+    <div class="grid3" style="margin-top: 10px">
+      <div class="big"><strong>155,122 ha</strong><span>Reserva de la Biosfera Los Tuxtlas</span></div>
+      <div class="big"><strong>9</strong><span>humedales Ramsar, como Tamiahua y Alvarado</span></div>
+      <div class="big"><strong>5 de 7</strong><span>especies de tortuga marina anidan aquí</span></div>
+    </div>
+  </section>
+
+  <!-- CONTAMINACIÓN -->
+  <section id="contaminacion" class="chapter reveal">
+    <span class="kicker">CAPÍTULO 4</span>
+    <h2>Lo que hay que cuidar</h2>
+    <p class="lead">Especialistas de la Universidad Veracruzana señalan que sus 18 ríos principales están contaminados. Hay contaminaciones que se ven y otras que no.</p>
+    <div class="cont">
+      <div class="row"><h3>Agua</h3><p>Descargas industriales, de ingenios y de ciudades. En peces del río Coatzacoalcos se halló mercurio y plomo; el Jamapa tiene 96 fuentes de contaminación.</p></div>
+      <div class="row"><h3>Hidrocarburos</h3><p>En 2025, una fuga de un ducto de Pemex contaminó el río Pantepec; se recuperaron 2.7 millones de litros.</p></div>
+      <div class="row"><h3>Basura</h3><p>Más de 7,000 toneladas diarias y solo 6 rellenos sanitarios. Sus lixiviados llegan a ríos, playas y al arrecife.</p></div>
+      <div class="row"><div><span class="tag">POCO COMÚN</span><h3>Lumínica</h3></div><p>Las luces de hoteles en playas como Nautla y Costa Esmeralda desorientan a las crías de tortuga, que van hacia la luz en lugar del mar.</p></div>
+      <div class="row"><div><span class="tag">POCO COMÚN</span><h3>Térmica</h3></div><p>La nucleoeléctrica de Laguna Verde devuelve al mar 63 m³ de agua por segundo a 38–44 °C. Un aumento de 1 o 2 °C ya afecta a la vida marina.</p></div>
+      <div class="row"><div><span class="tag">POCO COMÚN</span><h3>Electromagnética</h3></div><p>Antenas, líneas de alta tensión y aparatos inalámbricos. Sus efectos a largo plazo siguen en estudio.</p></div>
+    </div>
+  </section>
+
+  <!-- TRIVIA -->
+  <section id="trivia" class="quiz" aria-live="polite">
+    <span class="eyebrow">ÚLTIMA PARADA</span>
+    <h2>Trivia veracruzana</h2>
+    <div id="quiz"></div>
+  </section>
+
+  <p style="text-align:center"><a href="../ar/">Ver el póster en realidad aumentada</a> · <a href="../../fandango/">Fandango virtual</a> · <a href="../">Inicio</a></p>
+</main>
+
+<footer class="wrap">
+  <p><strong>Presenta:</strong> Daniel Ignacio Pedraza Martínez · <strong>Catedrática:</strong> Guadalupe Isamar Islas Jiménez · TecNM, Instituto Tecnológico de Pachuca.</p>
+  <p id="fuentes"></p>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const D = window.VERACRUZ;
+// --- Ruta de 8 paradas ---
+const ruta = document.getElementById('ruta');
+D.regiones.forEach((r) => {
+  const el = document.createElement('article');
+  el.className = 'stop reveal'; el.id = r.id;
+  el.innerHTML = `
+    <span class="pin" style="background:${r.color}" aria-hidden="true">${r.n}</span>
+    <div class="card"><div class="band" style="background:${r.color}"></div><div class="in">
+      <div><h2>${r.n}. ${r.nombre}</h2><div class="lug">${r.lugares.toUpperCase()}</div></div>
+      <div class="frase">${r.frase}</div>
+      <div class="facts">
+        <div class="fact"><b>CULTURA</b>${r.cultura}</div>
+        <div class="fact"><b>NATURALEZA</b>${r.naturaleza}</div>
+        <div class="fact"><b>ECONOMÍA</b>${r.economia}</div>
+        <div class="fact r"><b>RETO AMBIENTAL</b>${r.reto}</div>
+      </div>
+      <div class="stat">${r.municipios} municipios</div>
+    </div></div>`;
+  ruta.appendChild(el);
+});
+document.getElementById('fuentes').textContent = 'Fuentes: ' + D.fuentes.join(' · ') + '.';
+
+// --- Trivia ---
+const Q = [
+  { q: '¿Cuál es la cumbre más alta de México, que está en Veracruz?', o: ['Cofre de Perote', 'Pico de Orizaba', 'Volcán San Martín'], a: 1, w: 'El Pico de Orizaba o Citlaltépetl mide 5,636 m.' },
+  { q: '¿Qué ceremonia totonaca es patrimonio de la UNESCO?', o: ['Los Voladores', 'La Guelaguetza', 'El Carnaval'], a: 0, w: 'La ceremonia de los Voladores es Patrimonio Cultural Inmaterial.' },
+  { q: '¿Cuántos municipios tiene Veracruz?', o: ['125', '212', '570'], a: 1, w: 'Son 212, agrupados en 10 regiones.' },
+  { q: 'En Veracruz hay…', o: ['Más hombres que mujeres', 'Más mujeres que hombres', 'Exactamente los mismos'], a: 1, w: '52 % son mujeres: 92 hombres por cada 100 mujeres.' },
+  { q: '¿De dónde viene la mayor parte del PIB veracruzano?', o: ['Del campo', 'Del petróleo', 'De los servicios'], a: 2, w: 'Los servicios aportan el 60.3 % (2024).' },
+  { q: '¿Qué cultura floreció en San Lorenzo Tenochtitlán?', o: ['Olmeca', 'Maya', 'Mexica'], a: 0, w: 'Los olmecas, considerados la cultura madre de Mesoamérica.' },
+  { q: '¿Por qué la luz de los hoteles daña a las tortugas?', o: ['Las calienta', 'Las crías siguen la luz y no llegan al mar', 'Las asusta y no comen'], a: 1, w: 'Es contaminación lumínica: las crías se desorientan.' },
+  { q: '¿Qué es Laguna Verde?', o: ['Un sitio Ramsar', 'La única nucleoeléctrica de México', 'Una laguna en Los Tuxtlas'], a: 1, w: 'Devuelve al mar agua a 38–44 °C: contaminación térmica.' },
+  { q: '¿Qué porcentaje de la población vive en zonas rurales?', o: ['8.5 %', '21.5 %', '38.3 %'], a: 2, w: '38.3 % vive en localidades de menos de 2,500 habitantes.' },
+  { q: '¿Cuál es la razón principal por la que la gente migra en Veracruz?', o: ['Estudiar', 'Reunirse con la familia', 'Desastres naturales'], a: 1, w: 'Reunirse con la familia: 44.4 % (Censo 2020).' }
+];
+let i = 0, score = 0;
+const box = document.getElementById('quiz');
+function show() {
+  if (i >= Q.length) {
+    const msg = score >= 9 ? '¡Eres todo un jarocho de corazón!' : score >= 6 ? '¡Muy bien! Ya conoces Veracruz.' : 'Vuelve a recorrer la expedición y repite.';
+    box.innerHTML = `<div class="final"><strong>${score}/${Q.length}</strong><p class="q">${msg}</p><button class="qbtn" type="button" id="again">Jugar otra vez</button></div>`;
+    document.getElementById('again').onclick = () => { i = 0; score = 0; show(); };
+    return;
+  }
+  const it = Q[i];
+  box.innerHTML = `<p class="prog">Pregunta ${i + 1} de ${Q.length} · ${score} aciertos</p><p class="q">${it.q}</p><div class="opts"></div><p class="why"></p><div class="qbar"><span></span><button class="qbtn" type="button" hidden>Siguiente</button></div>`;
+  const opts = box.querySelector('.opts'), why = box.querySelector('.why'), next = box.querySelector('.qbtn');
+  it.o.forEach((t, k) => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = t;
+    b.onclick = () => {
+      [...opts.children].forEach((c, j) => { c.disabled = true; if (j === it.a) c.classList.add('ok'); });
+      if (k === it.a) score++; else b.classList.add('no');
+      why.textContent = (k === it.a ? '¡Correcto! ' : 'Casi. ') + it.w;
+      next.hidden = false; next.focus();
+    };
+    opts.appendChild(b);
+  });
+  next.onclick = () => { i++; show(); };
+}
+show();
+</script>
+</body>
+</html>
