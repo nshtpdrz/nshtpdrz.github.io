@@ -12,6 +12,7 @@
 html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-family: var(--body); overflow: hidden; }
 #ar { position: fixed; inset: 0; }
 #ar video { object-fit: cover; }
+#ar > div { pointer-events: none; }
 .screen { position: fixed; inset: 0; z-index: 30; background: var(--paper); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px max(20px, env(safe-area-inset-left)); text-align: center; overflow-y: auto; }
 .screen h1 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(34px, 10vw, 54px); line-height: .95; }
 .screen h1 span { color: var(--red); }
@@ -70,6 +71,7 @@ html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-
     <div><b>2</b><span>Busca buena luz y evita reflejos sobre el papel.</span></div>
     <div><b>3</b><span>Toca un número flotante para abrir su ficha.</span></div>
   </div>
+  <p id="inapp" hidden style="background:#FDEAE5; border:2px solid #C0272D; border-radius:12px; padding:10px 12px; font-size:15px">Estás dentro de otra app (WhatsApp, Instagram o Facebook), que no deja usar la cámara. Toca los tres puntos y elige <strong>Abrir en el navegador</strong> (Chrome o Safari).</p>
   <button class="btn" id="go" type="button">Encender cámara</button>
   <button class="btn alt" id="noCam" type="button">Ver sin cámara</button>
   <a href="../" style="color: var(--ink); font-weight: 700">Volver al inicio</a>
@@ -100,6 +102,7 @@ html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-
 const R = window.VERACRUZ.regiones;
 const $ = (id) => document.getElementById(id);
 let current = null, tab = 'cultura';
+if (/FBAN|FBAV|Instagram|WhatsApp|Line\/|; wv\)/i.test(navigator.userAgent)) $('inapp').hidden = false;
 
 // ---------- Ficha ----------
 function openRegion(r) {
@@ -227,15 +230,21 @@ $('go').addEventListener('click', async () => {
     anchor.onTargetFound = () => { found = true; $('status').textContent = 'Póster encontrado'; $('scan').hidden = true; if (!$('sheet').classList.contains('open')) $('hint').hidden = false; };
     anchor.onTargetLost = () => { found = false; $('status').textContent = 'Buscando el póster…'; $('scan').hidden = false; $('hint').hidden = true; };
 
-    // --- Toques ---
-    const ray = new THREE.Raycaster(), v2 = new THREE.Vector2();
-    renderer.domElement.addEventListener('pointerup', (e) => {
-      if (!found) return;
-      const rect = renderer.domElement.getBoundingClientRect();
-      v2.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
-      ray.setFromCamera(v2, camera);
-      const hit = ray.intersectObjects(pins)[0];
-      if (hit) openRegion(hit.object.userData.region);
+    // --- Toques: se escuchan en toda la pantalla (MindAR pone una capa encima del lienzo)
+    // y se elige el número más cercano al dedo, con margen generoso.
+    const tmp = new THREE.Vector3();
+    window.addEventListener('pointerup', (e) => {
+      if (!found || $('ar').hidden) return;
+      if (e.target.closest && e.target.closest('#sheet, #hud a, .screen')) return;
+      let best = null, bestD = 70;
+      pins.forEach((p) => {
+        p.getWorldPosition(tmp); tmp.project(camera);
+        if (tmp.z > 1) return;
+        const sx = (tmp.x + 1) / 2 * innerWidth, sy = (1 - tmp.y) / 2 * innerHeight;
+        const d = Math.hypot(sx - e.clientX, sy - e.clientY);
+        if (d < bestD) { bestD = d; best = p; }
+      });
+      if (best) openRegion(best.userData.region);
     });
 
     // --- Animación ---
