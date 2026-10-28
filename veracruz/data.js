@@ -4,7 +4,7 @@ window.VERACRUZ = {
   regiones: [
     {
       n: 1, id: 'huasteca', nombre: 'Huasteca', lugares: 'Pánuco · Tuxpan · Tantoyuca · Chicontepec',
-      color: '#E0A21B', px: 370, py: 370, municipios: 33,
+      color: '#B07A0C', px: 370, py: 370, municipios: 33,
       frase: 'Donde suena el violín huasteco y se cocina el tamal más grande de México.',
       cultura: 'Son huasteco con violín, jarana y huapanguera, y el zacahuil, un tamal gigante. Viven aquí pueblos téenek, nahuas, otomíes y tepehuas.',
       naturaleza: 'La Laguna de Tamiahua, humedal Ramsar de 88,000 ha; la Sierra de Otontepec y los arrecifes de Lobos-Tuxpan.',
