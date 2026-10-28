@@ -33,7 +33,7 @@ window.VERACRUZ = {
       n: 4, id: 'puerto', nombre: 'Puerto de Veracruz', lugares: 'Veracruz · Boca del Río',
       color: '#1B8DB3', px: 560, py: 720, municipios: 12,
       frase: 'El puerto que abrió México al mundo.',
-      cultura: 'Carnaval, danzón, son jarocho y café lechero. El municipio de Veracruz es el más poblado del estado (607,209 hab. en 2020).',
+      cultura: 'Es la «Cuatro veces Heroica» Veracruz: defendió a México frente a España (1825), Francia (1838) y Estados Unidos (1847 y 1914), cuando los cadetes de la Escuela Naval defendieron el puerto. Carnaval, danzón, son jarocho y café lechero. El municipio de Veracruz es el más poblado del estado (607,209 hab. en 2020).',
       naturaleza: 'Frente a sus playas está el Parque Nacional Sistema Arrecifal Veracruzano, de 52,238 ha.',
       economia: 'Uno de los puertos más importantes del país: comercio exterior, turismo y servicios.',
       reto: 'Los lixiviados del basurero municipal llegan a las playas y al arrecife. El río Jamapa tiene 96 fuentes de contaminación registradas.'
@@ -81,6 +81,8 @@ window.VERACRUZ = {
     'INPI y Programa Veracruzano de Cultura 2025-2030',
     'CONANP, CONABIO y Universidad Veracruzana',
     'Revista Internacional de Métodos Numéricos (2013): descarga térmica de Laguna Verde',
-    'Excélsior, Expansión y Migraciones Internacionales (El Colef)'
+    'Excélsior, Expansión y Migraciones Internacionales (El Colef)',
+    'INAH, San Juan de Ulúa: baluarte de cuatro gestas heroicas',
+    'Secretaría de Marina, Reseña histórica del 21 de abril de 1914'
   ]
 };

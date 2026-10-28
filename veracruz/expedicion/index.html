@@ -82,6 +82,25 @@ a { color: var(--sea); }
 .cont .row p { margin: 0; font-size: 15px; }
 .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--yellow); margin-bottom: 4px; }
 @media (max-width: 520px) { .cont .row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+/* historia */
+.time { position: relative; padding-left: 34px; display: grid; gap: 12px; margin-top: 6px; }
+.time::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 4px; background: var(--red); border-radius: 2px; }
+.ev { position: relative; background: var(--card); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px; min-width: 0; }
+.ev::before { content: ""; position: absolute; left: -31px; top: 16px; width: 18px; height: 18px; border-radius: 9px; background: var(--yellow); border: 3px solid var(--red); }
+.ev .yr { font-family: var(--display); font-weight: 800; font-size: 30px; line-height: 1; color: var(--red); }
+.ev h3 { font-size: 19px; margin: 4px 0; }
+.ev p { margin: 0; font-size: 15px; }
+.ev .vs { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; background: var(--sea); color: #fff; padding: 2px 8px; border-radius: 999px; }
+.naval { background: var(--sea); color: #fff; border-radius: 20px; padding: 16px; margin-top: 14px; display: grid; gap: 10px; }
+.naval h3 { font-size: 24px; }
+.naval p { margin: 0; color: #DDEBF2; font-size: 15px; }
+.heroes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hero { background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.35); border-radius: 14px; padding: 12px; min-width: 0; }
+.hero strong { display: block; font-family: var(--display); font-size: 19px; line-height: 1.1; color: var(--yellow); }
+.hero span { display: block; font-size: 13px; font-weight: 700; color: #fff; margin: 2px 0 6px; }
+.hero p { font-size: 14px; }
+.grito { font-family: var(--hand); font-size: 30px; line-height: 1.05; color: var(--yellow); text-align: center; }
+@media (max-width: 520px) { .heroes { grid-template-columns: minmax(0, 1fr); } }
 /* trivia */
 .quiz { background: var(--sea); color: #fff; border-radius: 22px; padding: 20px 18px; margin: 10px 0 30px; }
 .quiz h2 { font-size: 32px; }
@@ -120,6 +139,7 @@ footer { border-top: 2px solid var(--line); padding: 18px 0 calc(30px + env(safe
       <a href="#economia">Economía</a>
       <a href="#naturaleza">Naturaleza</a>
       <a href="#contaminacion">Contaminación</a>
+      <a href="#heroica">Cuatro veces heroica</a>
       <a href="#trivia">Trivia</a>
     </nav>
   </div>
@@ -231,6 +251,29 @@ footer { border-top: 2px solid var(--line); padding: 18px 0 calc(30px + env(safe
     </div>
   </section>
 
+  <!-- HISTORIA -->
+  <section id="heroica" class="chapter">
+    <span class="kicker">CAPÍTULO 5</span>
+    <h2>¿Por qué es «Cuatro veces Heroica»?</h2>
+    <p class="lead">El puerto de Veracruz defendió a México de invasiones extranjeras en cuatro ocasiones. Por eso, en 1948, un decreto presidencial lo declaró oficialmente «cuatro veces heroico». La fortaleza de San Juan de Ulúa fue testigo de las cuatro.</p>
+    <div class="time">
+      <div class="ev"><span class="yr">1825</span> <span class="vs">CONTRA ESPAÑA</span><h3>El último bastión español</h3><p>Ya consumada la Independencia, una guarnición española seguía atrincherada en San Juan de Ulúa. Las fuerzas mexicanas la obligaron a rendirse: fue el fin del dominio español en México.</p></div>
+      <div class="ev"><span class="yr">1838</span> <span class="vs">CONTRA FRANCIA</span><h3>La Guerra de los Pasteles</h3><p>Francia atacó para cobrar daños reclamados por sus ciudadanos, entre ellos un pastelero. Su flota bombardeó San Juan de Ulúa y desembarcó en el puerto, y la ciudad salió a enfrentarla; en esa defensa, Antonio López de Santa Anna perdió una pierna.</p></div>
+      <div class="ev"><span class="yr">1847</span> <span class="vs">CONTRA ESTADOS UNIDOS</span><h3>El sitio de Veracruz</h3><p>Durante la guerra con Estados Unidos, el puerto fue bombardeado y ocupado. Aunque cayó, su población lo defendió con tenacidad.</p></div>
+      <div class="ev"><span class="yr">1914</span> <span class="vs">CONTRA ESTADOS UNIDOS</span><h3>La defensa del 21 de abril</h3><p>En plena Revolución, tropas estadounidenses desembarcaron para tomar la aduana e impedir que llegara un cargamento de armas para el gobierno de Victoriano Huerta. Cadetes de la Escuela Naval y ciudadanos salieron a defender el puerto.</p></div>
+    </div>
+    <div class="naval">
+      <h3>Los jóvenes héroes de la Escuela Naval (1914)</h3>
+      <p>La mañana del 21 de abril, a las 11:20, los marines estadounidenses empezaron a desembarcar. El comodoro Manuel Azueta reunió a los cadetes de la Escuela Naval Militar con un grito:</p>
+      <p class="grito">«¡La Patria está en peligro!»</p>
+      <div class="heroes">
+        <div class="hero"><strong>Virgilio Uribe Robles</strong><span>CADETE</span><p>Recibió un disparo en la cabeza mientras cargaba su arma. Lo llevaban al hospital, pero murió en el camino.</p></div>
+        <div class="hero"><strong>José Azueta Abad</strong><span>TENIENTE DE ARTILLERÍA</span><p>Hijo del comodoro, disparó una ametralladora contra los invasores aun herido en ambas piernas y un brazo. Murió el 10 de mayo de 1914.</p></div>
+      </div>
+      <p>También resistieron el centinela Eduardo Colina, que volvió a su puesto entre los escombros, y Ricardo Ochoa. Las tropas estadounidenses se quedaron unos siete meses y salieron el 23 de noviembre de 1914. En 1949 la escuela recibió el título de <strong style="color:#fff">Heroica Escuela Naval Militar</strong>.</p>
+    </div>
+  </section>
+
   <!-- TRIVIA -->
   <section id="trivia" class="quiz" aria-live="polite">
     <span class="eyebrow">ÚLTIMA PARADA</span>
@@ -282,6 +325,8 @@ const Q = [
   { q: '¿Por qué la luz de los hoteles daña a las tortugas?', o: ['Las calienta', 'Las crías siguen la luz y no llegan al mar', 'Las asusta y no comen'], a: 1, w: 'Es contaminación lumínica: las crías se desorientan.' },
   { q: '¿Qué es Laguna Verde?', o: ['Un sitio Ramsar', 'La única nucleoeléctrica de México', 'Una laguna en Los Tuxtlas'], a: 1, w: 'Devuelve al mar agua a 38–44 °C: contaminación térmica.' },
   { q: '¿Qué porcentaje de la población vive en zonas rurales?', o: ['8.5 %', '21.5 %', '38.3 %'], a: 2, w: '38.3 % vive en localidades de menos de 2,500 habitantes.' },
+  { q: '¿Por qué Veracruz es «Cuatro veces Heroica»?', o: ['Por cuatro terremotos', 'Por defender a México de cuatro invasiones', 'Por cuatro fiestas patronales'], a: 1, w: 'Defendió a México frente a España (1825), Francia (1838) y Estados Unidos (1847 y 1914).' },
+  { q: '¿Qué cadete de la Escuela Naval murió en la defensa de 1914?', o: ['Virgilio Uribe', 'Juan Escutia', 'Miguel Hidalgo'], a: 0, w: 'Virgilio Uribe Robles cayó el 21 de abril de 1914; José Azueta murió días después.' },
   { q: '¿Cuál es la razón principal por la que la gente migra en Veracruz?', o: ['Estudiar', 'Reunirse con la familia', 'Desastres naturales'], a: 1, w: 'Reunirse con la familia: 44.4 % (Censo 2020).' }
 ];
 let i = 0, score = 0;
